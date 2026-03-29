@@ -14,14 +14,12 @@ describe('CoreServiceProvider', () => {
 
       const s = vi.spyOn(provider as any, 'registerServices').mockImplementation(() => {})
       const m = vi.spyOn(provider as any, 'registerMiddleware').mockImplementation(() => {})
-      const l = vi.spyOn(provider as any, 'registerListeners').mockImplementation(() => {})
       const a = vi.spyOn(provider as any, 'registerAliases').mockImplementation(() => {})
 
       provider.register()
 
       expect(s).toHaveBeenCalled()
       expect(m).toHaveBeenCalled()
-      expect(l).toHaveBeenCalled()
       expect(a).toHaveBeenCalled()
     })
   })
@@ -36,9 +34,11 @@ describe('CoreServiceProvider', () => {
       const provider = new CoreServiceProvider({ container, blueprint, logger, eventEmitter } as any)
 
       const bootSpy = vi.spyOn(provider as any, 'bootSubscribers').mockImplementation(() => {})
+      const l = vi.spyOn(provider as any, 'registerListeners').mockImplementation(() => {})
 
       await provider.boot()
 
+      expect(l).toHaveBeenCalled()
       expect(bootSpy).toHaveBeenCalled()
     })
   })

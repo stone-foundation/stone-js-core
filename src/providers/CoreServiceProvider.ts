@@ -123,7 +123,6 @@ export class CoreServiceProvider implements IServiceProvider {
   public register (): void {
     this.registerServices()
     this.registerMiddleware()
-    this.registerListeners()
     this.registerAliases()
   }
 
@@ -133,6 +132,7 @@ export class CoreServiceProvider implements IServiceProvider {
    * This method is used to bootstrap subscribers.
    */
   public async boot (): Promise<void> {
+    this.registerListeners()
     await this.bootSubscribers()
   }
 
