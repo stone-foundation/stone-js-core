@@ -5,6 +5,14 @@ All notable changes to the "Stone.js Core" extension will be documented in this 
 ## Unreleased
 
 
+## [0.1.4](https://github.com/stone-foundation/stone-js-core/compare/v0.1.3...v0.1.4) (2026-03-29)
+
+
+### Bug Fixes
+
+* export IContainer directly ([#37](https://github.com/stone-foundation/stone-js-core/issues/37)) ([a1d2a92](https://github.com/stone-foundation/stone-js-core/commit/a1d2a92a59de5d2cce271cd03225f3341b4d3791))
+* register event listener in boot stage instead of register stage ([#35](https://github.com/stone-foundation/stone-js-core/issues/35)) ([aa09e56](https://github.com/stone-foundation/stone-js-core/commit/aa09e568169f8c4e31af0a53be6a253620847aa0))
+
 ## [0.1.3](https://github.com/stone-foundation/stone-js-core/compare/v0.1.2...v0.1.3) (2025-07-19)
 
 
