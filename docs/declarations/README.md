@@ -95,7 +95,6 @@
 - [HookName](type-aliases/HookName.md)
 - [IAdapterErrorHandlerClass](type-aliases/IAdapterErrorHandlerClass.md)
 - [IBlueprint](type-aliases/IBlueprint.md)
-- [IContainer](type-aliases/IContainer.md)
 - [IErrorHandlerClass](type-aliases/IErrorHandlerClass.md)
 - [IEventListenerClass](type-aliases/IEventListenerClass.md)
 - [IEventSubscriberClass](type-aliases/IEventSubscriberClass.md)

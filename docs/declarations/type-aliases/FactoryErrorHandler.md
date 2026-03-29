@@ -24,7 +24,7 @@ Represents a factory function that creates an error handler function.
 
 The dependency injection container.
 
-[`IContainer`](IContainer.md) | `any`
+`IContainer` | `any`
 
 ## Returns
 

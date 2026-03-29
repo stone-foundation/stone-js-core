@@ -1,10 +1,15 @@
 import { Event } from './events/Event'
 import { Config } from '@stone-js/config'
 import { EventEmitter } from './events/EventEmitter'
-import { Container } from '@stone-js/service-container'
+import { IContainer } from '@stone-js/service-container'
 import { IncomingEvent, IncomingEventOptions } from './events/IncomingEvent'
 import { OutgoingResponse, OutgoingResponseOptions } from './events/OutgoingResponse'
 import { FactoryPipe, FunctionalPipe, MetaPipe, MixedPipe, NextPipe, PipeAlias, PipeClass, PipelineHookContext, PipelineHookListener, PipeType } from '@stone-js/pipeline'
+
+/**
+ * Export the Container interface
+ */
+export { IContainer }
 
 /**
  * Declare the unique symbol type for metadata keys.
@@ -35,11 +40,6 @@ export type Laziable<T> = () => Promise<T>
  * Represents a Arrayable type.
  */
 export type Arrayable<T> = T | T[]
-
-/**
- * Represents a Container type.
- */
-export type IContainer = Container
 
 /**
  * Represents a Next type.
@@ -702,7 +702,7 @@ OutgoingResponseType extends OutgoingResponse
  *
  * Represents a listener hook that can either be synchronous or asynchronous.
  */
-export type KernelHookListener = (container?: Container | any) => Promiseable<void>
+export type KernelHookListener = (container?: IContainer | any) => Promiseable<void>
 
 /**
  * Represents a IBlueprintBuilder type.

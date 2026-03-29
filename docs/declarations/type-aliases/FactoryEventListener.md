@@ -18,7 +18,7 @@ Represents a FactoryEventListener type.
 
 The dependency injection container.
 
-[`IContainer`](IContainer.md) | `any`
+`IContainer` | `any`
 
 ## Returns
 

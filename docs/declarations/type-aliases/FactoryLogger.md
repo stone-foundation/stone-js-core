@@ -12,7 +12,7 @@ Represents a FactoryLogger type.
 
 The dependency injection container.
 
-[`IContainer`](IContainer.md) | `any`
+`IContainer` | `any`
 
 ## Returns
 
