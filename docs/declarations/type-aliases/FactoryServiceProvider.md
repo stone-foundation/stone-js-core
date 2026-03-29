@@ -12,7 +12,7 @@ Represents a FactoryServiceProvider type.
 
 The dependency injection container.
 
-[`IContainer`](IContainer.md) | `any`
+`IContainer` | `any`
 
 ## Returns
 

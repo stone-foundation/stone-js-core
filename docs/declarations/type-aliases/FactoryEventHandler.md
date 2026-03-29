@@ -24,7 +24,7 @@ Represents a factory function that creates an event handler function.
 
 The dependency injection container.
 
-[`IContainer`](IContainer.md) | `any`
+`IContainer` | `any`
 
 ## Returns
 

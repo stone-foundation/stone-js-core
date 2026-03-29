@@ -12,7 +12,7 @@ Represents a FactoryEventSubscriber type.
 
 The dependency injection container.
 
-[`IContainer`](IContainer.md) | `any`
+`IContainer` | `any`
 
 ## Returns
 
