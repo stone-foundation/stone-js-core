@@ -5,6 +5,13 @@ All notable changes to the "Stone.js Core" extension will be documented in this 
 ## Unreleased
 
 
+## [0.2.0](https://github.com/stone-foundation/stone-js-core/compare/v0.1.4...v0.2.0) (2026-04-05)
+
+
+### Features
+
+* Add onEvent hook to kernel for incoming event injection ([#38](https://github.com/stone-foundation/stone-js-core/issues/38)) ([0e50ee4](https://github.com/stone-foundation/stone-js-core/commit/0e50ee4552f6844287b38c6def62ad947ec7d204))
+
 ## [0.1.4](https://github.com/stone-foundation/stone-js-core/compare/v0.1.3...v0.1.4) (2026-03-29)
 
 
