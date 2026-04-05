@@ -16,6 +16,14 @@ Represents a hook that can either be synchronous or asynchronous.
 
 ## Properties
 
+### onEvent?
+
+```ts
+optional onEvent: KernelHookListener;
+```
+
+***
+
 ### onEventHandled?
 
 ```ts
