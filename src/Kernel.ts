@@ -176,6 +176,8 @@ export class Kernel<
 
     this.container.instance('event', event).instance('request', event)
 
+    await this.executeHooks('onEvent')
+
     try {
       const response = await Pipeline
         .create(this.makePipelineOptions())

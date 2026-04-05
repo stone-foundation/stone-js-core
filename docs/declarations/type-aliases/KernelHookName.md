@@ -4,6 +4,7 @@
 type KernelHookName = 
   | "onInit"
   | "onHandlingEvent"
+  | "onEvent"
   | "onExecutingEventHandler"
   | "onExecutingErrorHandler"
   | "onKernelMiddlewareProcessed"

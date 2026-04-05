@@ -28,6 +28,18 @@ handle: FunctionalAdapterEventHandler<TEvent, UResponse>;
 
 ***
 
+### onEvent()?
+
+```ts
+optional onEvent: () => Promiseable<void>;
+```
+
+#### Returns
+
+[`Promiseable`](../type-aliases/Promiseable.md)\<`void`\>
+
+***
+
 ### onEventHandled()?
 
 ```ts

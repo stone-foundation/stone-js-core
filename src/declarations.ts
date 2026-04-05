@@ -134,6 +134,7 @@ export type AdapterHookName =
 export type KernelHookName =
   | 'onInit'
   | 'onHandlingEvent'
+  | 'onEvent'
   | 'onExecutingEventHandler'
   | 'onExecutingErrorHandler'
   | 'onKernelMiddlewareProcessed'
@@ -666,6 +667,7 @@ OutgoingResponseType extends OutgoingResponse
 > {
   onInit?: KernelHookListener[]
   onHandlingEvent?: KernelHookListener[]
+  onEvent?: KernelHookListener[]
   onExecutingEventHandler?: KernelHookListener[]
   onExecutingErrorHandler?: KernelHookListener[]
   onPreparingResponse?: KernelHookListener[]
@@ -687,6 +689,7 @@ OutgoingResponseType extends OutgoingResponse
 > {
   onInit?: KernelHookListener
   onHandlingEvent?: KernelHookListener
+  onEvent?: KernelHookListener
   onExecutingEventHandler?: KernelHookListener
   onExecutingErrorHandler?: KernelHookListener
   onPreparingResponse?: KernelHookListener
@@ -1192,6 +1195,7 @@ export interface RawResponseOptions {
 export interface ILifecycleAdapterEventHandler<TEvent extends IncomingEvent, UResponse extends OutgoingResponse> {
   onInit?: () => Promiseable<void>
   onHandlingEvent?: () => Promiseable<void>
+  onEvent?: () => Promiseable<void>
   handle: FunctionalAdapterEventHandler<TEvent, UResponse>
   onEventHandled?: () => Promiseable<void>
   onTerminate?: () => Promiseable<void>
