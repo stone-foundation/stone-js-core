@@ -6,6 +6,8 @@ Represents a lifecycle event handler with hooks for initialization, pre-handling
 
 ## Template
 
+**TEvent,**
+
 UResponse
 
 ## Type Parameters
@@ -28,10 +30,10 @@ handle: FunctionalAdapterEventHandler<TEvent, UResponse>;
 
 ***
 
-### onEvent()?
+### onEvent?
 
 ```ts
-optional onEvent: () => Promiseable<void>;
+optional onEvent?: () => Promiseable<void>;
 ```
 
 #### Returns
@@ -40,10 +42,10 @@ optional onEvent: () => Promiseable<void>;
 
 ***
 
-### onEventHandled()?
+### onEventHandled?
 
 ```ts
-optional onEventHandled: () => Promiseable<void>;
+optional onEventHandled?: () => Promiseable<void>;
 ```
 
 #### Returns
@@ -52,10 +54,10 @@ optional onEventHandled: () => Promiseable<void>;
 
 ***
 
-### onHandlingEvent()?
+### onHandlingEvent?
 
 ```ts
-optional onHandlingEvent: () => Promiseable<void>;
+optional onHandlingEvent?: () => Promiseable<void>;
 ```
 
 #### Returns
@@ -64,10 +66,10 @@ optional onHandlingEvent: () => Promiseable<void>;
 
 ***
 
-### onInit()?
+### onInit?
 
 ```ts
-optional onInit: () => Promiseable<void>;
+optional onInit?: () => Promiseable<void>;
 ```
 
 #### Returns
@@ -76,10 +78,10 @@ optional onInit: () => Promiseable<void>;
 
 ***
 
-### onTerminate()?
+### onTerminate?
 
 ```ts
-optional onTerminate: () => Promiseable<void>;
+optional onTerminate?: () => Promiseable<void>;
 ```
 
 #### Returns

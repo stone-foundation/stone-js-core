@@ -5,9 +5,13 @@ Supports functional, factory-based, and class-based subscribers.
 
 ## Param
 
+**module**
+
 The subscriber implementation.
 
 ## Param
+
+**options**
 
 Optional `isFactory` flag to define subscriber type.
 

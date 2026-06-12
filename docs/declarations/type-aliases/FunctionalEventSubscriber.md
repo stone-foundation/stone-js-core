@@ -1,4 +1,4 @@
-# Type Alias: FunctionalEventSubscriber()
+# Type Alias: FunctionalEventSubscriber
 
 ```ts
 type FunctionalEventSubscriber = (eventEmitter) => Promiseable<void>;

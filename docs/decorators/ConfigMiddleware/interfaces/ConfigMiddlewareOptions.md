@@ -9,7 +9,7 @@ This interface defines the configuration options for marking a class as middlewa
 ### params?
 
 ```ts
-optional params: unknown[];
+optional params?: unknown[];
 ```
 
 The params to pass to the middleware.
@@ -19,7 +19,7 @@ The params to pass to the middleware.
 ### priority?
 
 ```ts
-optional priority: number;
+optional priority?: number;
 ```
 
 The execution priority of the middleware.

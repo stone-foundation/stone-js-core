@@ -9,7 +9,7 @@ This interface defines the configuration options for marking a class as middlewa
 ### adapterAlias?
 
 ```ts
-optional adapterAlias: string;
+optional adapterAlias?: string;
 ```
 
 The alias name for which the middleware is used.
@@ -19,7 +19,7 @@ The alias name for which the middleware is used.
 ### params?
 
 ```ts
-optional params: unknown[];
+optional params?: unknown[];
 ```
 
 The params to pass to the middleware.
@@ -29,7 +29,7 @@ The params to pass to the middleware.
 ### platform?
 
 ```ts
-optional platform: string;
+optional platform?: string;
 ```
 
 The platform name for which the middleware is used.
@@ -39,7 +39,7 @@ The platform name for which the middleware is used.
 ### priority?
 
 ```ts
-optional priority: number;
+optional priority?: number;
 ```
 
 The execution priority of the middleware.

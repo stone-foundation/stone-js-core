@@ -22,4 +22,6 @@ Represents an event handler that can either be a simple function or a meta event
 
 ## Template
 
+**TEvent,**
+
 UResponse

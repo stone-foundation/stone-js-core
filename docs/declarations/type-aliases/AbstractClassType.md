@@ -1,4 +1,4 @@
-# Type Alias: AbstractClassType()\<Type\>
+# Type Alias: AbstractClassType\<Type\>
 
 ```ts
 type AbstractClassType<Type> = (...args) => Type;

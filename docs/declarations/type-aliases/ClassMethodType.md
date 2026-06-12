@@ -1,4 +1,4 @@
-# Type Alias: ClassMethodType()\<This\>
+# Type Alias: ClassMethodType\<This\>
 
 ```ts
 type ClassMethodType<This> = (this, ...args) => any;

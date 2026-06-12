@@ -1,7 +1,7 @@
 # Function: ConfigMiddleware()
 
 ```ts
-function ConfigMiddleware<T>(options): ClassDecorator;
+function ConfigMiddleware<T>(options?): ClassDecorator;
 ```
 
 ConfigMiddleware decorator to mark a class as middleware within the Stone.js framework.
@@ -17,7 +17,7 @@ as part of the request/response lifecycle or other layers such as adapter, kerne
 
 ## Parameters
 
-### options
+### options?
 
 [`ConfigMiddlewareOptions`](../interfaces/ConfigMiddlewareOptions.md) = `{}`
 

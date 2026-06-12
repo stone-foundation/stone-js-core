@@ -1,4 +1,4 @@
-# Type Alias: FactoryEventSubscriber()
+# Type Alias: FactoryEventSubscriber
 
 ```ts
 type FactoryEventSubscriber = (container) => FunctionalEventSubscriber;
@@ -10,9 +10,9 @@ Represents a FactoryEventSubscriber type.
 
 ### container
 
-The dependency injection container.
+`IContainer` \| `any`
 
-`IContainer` | `any`
+The dependency injection container.
 
 ## Returns
 

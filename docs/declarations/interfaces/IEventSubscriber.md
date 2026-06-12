@@ -17,4 +17,6 @@ Subscribes to an event emitter to handle various events.
 
 #### Param
 
+**eventEmitter**
+
 The event emitter to subscribe to.

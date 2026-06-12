@@ -1,4 +1,4 @@
-# Class: `abstract` Event
+# Abstract Class: Event
 
 Class representing an Event.
 
@@ -48,7 +48,7 @@ The metadata associated with the event.
 ### source?
 
 ```ts
-readonly optional source: object;
+readonly optional source?: object;
 ```
 
 The source of the event.
@@ -103,16 +103,20 @@ Get data from metadata.
 
 #### Param
 
+**key**
+
 The key to retrieve from metadata.
 
 #### Param
+
+**fallback**
 
 The fallback value if the key is not found.
 
 #### Call Signature
 
 ```ts
-get<TReturn>(key): undefined | TReturn;
+get<TReturn>(key): TReturn | undefined;
 ```
 
 Get data from metadata.
@@ -133,7 +137,7 @@ The key to retrieve from metadata.
 
 ##### Returns
 
-`undefined` \| `TReturn`
+`TReturn` \| `undefined`
 
 The value associated with the key or the fallback.
 
@@ -179,16 +183,20 @@ Get data from metadata.
 
 #### Param
 
+**key**
+
 The key to retrieve from metadata.
 
 #### Param
+
+**fallback**
 
 The fallback value if the key is not found.
 
 #### Call Signature
 
 ```ts
-getMetadataValue<TReturn>(key): undefined | TReturn;
+getMetadataValue<TReturn>(key): TReturn | undefined;
 ```
 
 Get data from metadata.
@@ -209,7 +217,7 @@ The key to retrieve from metadata.
 
 ##### Returns
 
-`undefined` \| `TReturn`
+`TReturn` \| `undefined`
 
 The value associated with the key or the fallback.
 
@@ -291,9 +299,9 @@ Add data to metadata.
 
 ##### key
 
-The key or object to add to metadata.
+`string` \| `Record`\<`string`, `unknown`\>
 
-`string` | `Record`\<`string`, `unknown`\>
+The key or object to add to metadata.
 
 ##### value?
 

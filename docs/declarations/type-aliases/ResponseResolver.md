@@ -1,4 +1,4 @@
-# Type Alias: ResponseResolver()\<TOutgoingResponse\>
+# Type Alias: ResponseResolver\<TOutgoingResponse\>
 
 ```ts
 type ResponseResolver<TOutgoingResponse> = (options) => Promiseable<TOutgoingResponse>;

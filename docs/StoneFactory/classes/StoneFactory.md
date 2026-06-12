@@ -8,6 +8,8 @@ the appropriate adapter from the provided blueprint. It handles the core setup o
 
 ## Template
 
+**TEvent,**
+
 UResponse
 
 ## Type Parameters
@@ -35,9 +37,10 @@ Use this method to add custom configurations to the application.
 
 ##### configuration
 
-The user-defined blueprint configuration.
+  \| [`FunctionalConfiguration`](../../declarations/type-aliases/FunctionalConfiguration.md)
+  \| `Partial`\<`Record`\<`"configure"` \| `"afterConfigure"`, [`FunctionalConfiguration`](../../declarations/type-aliases/FunctionalConfiguration.md)\>\>
 
-[`FunctionalConfiguration`](../../declarations/type-aliases/FunctionalConfiguration.md) | `Partial`\<`Record`\<`"configure"` \| `"afterConfigure"`, [`FunctionalConfiguration`](../../declarations/type-aliases/FunctionalConfiguration.md)\>\>
+The user-defined blueprint configuration.
 
 #### Returns
 
@@ -104,7 +107,7 @@ The platform-specific response.
 ### create()
 
 ```ts
-static create<TEvent, UResponse>(options): StoneFactory<TEvent, UResponse>;
+static create<TEvent, UResponse>(options?): StoneFactory<TEvent, UResponse>;
 ```
 
 Create a new StoneFactory instance.
@@ -121,7 +124,7 @@ Create a new StoneFactory instance.
 
 #### Parameters
 
-##### options
+##### options?
 
 [`StoneFactoryOptions`](../interfaces/StoneFactoryOptions.md) = `{}`
 

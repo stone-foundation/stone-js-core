@@ -10,7 +10,7 @@ Represents a IBlueprintBuilder type.
 
 ## Properties
 
-### build()
+### build
 
 ```ts
 build: (modules) => Promise<BlueprintType>;

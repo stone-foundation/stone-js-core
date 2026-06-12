@@ -19,7 +19,7 @@ Represents a hook that can either be synchronous or asynchronous.
 ### onBlueprintMiddlewareProcessed?
 
 ```ts
-optional onBlueprintMiddlewareProcessed: PipelineHookListener<ContextType, BlueprintType, any[]>;
+optional onBlueprintMiddlewareProcessed?: PipelineHookListener<ContextType, BlueprintType, any[]>;
 ```
 
 ***
@@ -27,7 +27,7 @@ optional onBlueprintMiddlewareProcessed: PipelineHookListener<ContextType, Bluep
 ### onBlueprintPrepared?
 
 ```ts
-optional onBlueprintPrepared: BlueprintHookListener<BlueprintType, ContextType>;
+optional onBlueprintPrepared?: BlueprintHookListener<BlueprintType, ContextType>;
 ```
 
 ***
@@ -35,7 +35,7 @@ optional onBlueprintPrepared: BlueprintHookListener<BlueprintType, ContextType>;
 ### onPreparingBlueprint?
 
 ```ts
-optional onPreparingBlueprint: BlueprintHookListener<BlueprintType, ContextType>;
+optional onPreparingBlueprint?: BlueprintHookListener<BlueprintType, ContextType>;
 ```
 
 ***
@@ -43,5 +43,5 @@ optional onPreparingBlueprint: BlueprintHookListener<BlueprintType, ContextType>
 ### onProcessingBlueprintMiddleware?
 
 ```ts
-optional onProcessingBlueprintMiddleware: PipelineHookListener<ContextType, BlueprintType, any[]>;
+optional onProcessingBlueprintMiddleware?: PipelineHookListener<ContextType, BlueprintType, any[]>;
 ```

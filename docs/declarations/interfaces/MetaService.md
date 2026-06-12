@@ -15,7 +15,7 @@ alias: string | string[];
 ### isClass?
 
 ```ts
-optional isClass: boolean;
+optional isClass?: boolean;
 ```
 
 ***
@@ -23,7 +23,7 @@ optional isClass: boolean;
 ### isFactory?
 
 ```ts
-optional isFactory: boolean;
+optional isFactory?: boolean;
 ```
 
 ***
@@ -39,5 +39,5 @@ module: ServiceType;
 ### singleton?
 
 ```ts
-optional singleton: boolean;
+optional singleton?: boolean;
 ```

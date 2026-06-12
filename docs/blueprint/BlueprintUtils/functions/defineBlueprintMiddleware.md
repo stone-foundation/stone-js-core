@@ -4,9 +4,13 @@ Utility function to define a blueprint middleware.
 
 ## Param
 
+**module**
+
 The Middleware module.
 
 ## Param
+
+**options**
 
 The options for the Middleware.
 

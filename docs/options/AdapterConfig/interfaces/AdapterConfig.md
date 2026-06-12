@@ -37,7 +37,7 @@ The AdapterConfig allows developers to manage how the adapter behaves and how it
 ### alias?
 
 ```ts
-optional alias: string;
+optional alias?: string;
 ```
 
 The alias name for the adapter.
@@ -49,7 +49,7 @@ Optional property.
 ### current?
 
 ```ts
-optional current: boolean;
+optional current?: boolean;
 ```
 
 The current status identifier for the adapter.
@@ -61,7 +61,7 @@ Optional property.
 ### default?
 
 ```ts
-optional default: boolean;
+optional default?: boolean;
 ```
 
 Defines whether this adapter is the default adapter used by the application.

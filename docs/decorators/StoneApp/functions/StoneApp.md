@@ -1,7 +1,7 @@
 # Function: StoneApp()
 
 ```ts
-function StoneApp<T>(options, blueprints): ClassDecorator;
+function StoneApp<T>(options?, blueprints?): ClassDecorator;
 ```
 
 StoneApp decorator to mark a class as the main application entry point.
@@ -17,13 +17,13 @@ It allows for configuring the main application settings via the provided options
 
 ## Parameters
 
-### options
+### options?
 
 [`StoneAppOptions`](../interfaces/StoneAppOptions.md) = `{}`
 
 The configuration options for the application, based on StoneOptions.
 
-### blueprints
+### blueprints?
 
 (
   \| `Record`\<`string`, `any`\>

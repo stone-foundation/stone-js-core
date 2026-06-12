@@ -1,4 +1,4 @@
-# Type Alias: EventHandlerClass()\<TEvent, UResponse\>
+# Type Alias: EventHandlerClass\<TEvent, UResponse\>
 
 ```ts
 type EventHandlerClass<TEvent, UResponse> = (...args) => IEventHandler<TEvent, UResponse>;

@@ -1,4 +1,4 @@
-# Type Alias: FunctionalConfiguration()\<TValues\>
+# Type Alias: FunctionalConfiguration\<TValues\>
 
 ```ts
 type FunctionalConfiguration<TValues> = (blueprint) => Promiseable<void>;

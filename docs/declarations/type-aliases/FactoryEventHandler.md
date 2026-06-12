@@ -1,4 +1,4 @@
-# Type Alias: FactoryEventHandler()\<TEvent, UResponse\>
+# Type Alias: FactoryEventHandler\<TEvent, UResponse\>
 
 ```ts
 type FactoryEventHandler<TEvent, UResponse> = (container) => FunctionalEventHandler<TEvent, UResponse>;
@@ -22,9 +22,9 @@ Represents a factory function that creates an event handler function.
 
 ### container
 
-The dependency injection container.
+`IContainer` \| `any`
 
-`IContainer` | `any`
+The dependency injection container.
 
 ## Returns
 

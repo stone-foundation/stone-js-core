@@ -47,7 +47,7 @@ The content of the response.
 ### \_statusCode?
 
 ```ts
-protected optional _statusCode: number;
+protected optional _statusCode?: number;
 ```
 
 The status code of the response.
@@ -57,7 +57,7 @@ The status code of the response.
 ### \_statusMessage?
 
 ```ts
-protected optional _statusMessage: string;
+protected optional _statusMessage?: string;
 ```
 
 The status message of the response.
@@ -101,7 +101,7 @@ The prepared status of the response.
 ### source?
 
 ```ts
-readonly optional source: object;
+readonly optional source?: object;
 ```
 
 The source of the event.
@@ -181,14 +181,14 @@ The prepared status of the response.
 #### Get Signature
 
 ```ts
-get statusCode(): undefined | number;
+get statusCode(): number | undefined;
 ```
 
 Gets the status code of the outgoing response.
 
 ##### Returns
 
-`undefined` \| `number`
+`number` \| `undefined`
 
 The status code of the response, or undefined if not set.
 
@@ -199,14 +199,14 @@ The status code of the response, or undefined if not set.
 #### Get Signature
 
 ```ts
-get statusMessage(): undefined | string;
+get statusMessage(): string | undefined;
 ```
 
 Gets the status message of the outgoing response.
 
 ##### Returns
 
-`undefined` \| `string`
+`string` \| `undefined`
 
 The status message of the response, or undefined if not set.
 
@@ -244,16 +244,20 @@ Get data from metadata.
 
 #### Param
 
+**key**
+
 The key to retrieve from metadata.
 
 #### Param
+
+**fallback**
 
 The fallback value if the key is not found.
 
 #### Call Signature
 
 ```ts
-get<TReturn>(key): undefined | TReturn;
+get<TReturn>(key): TReturn | undefined;
 ```
 
 Get data from metadata.
@@ -274,7 +278,7 @@ The key to retrieve from metadata.
 
 ##### Returns
 
-`undefined` \| `TReturn`
+`TReturn` \| `undefined`
 
 The value associated with the key or the fallback.
 
@@ -328,16 +332,20 @@ Get data from metadata.
 
 #### Param
 
+**key**
+
 The key to retrieve from metadata.
 
 #### Param
+
+**fallback**
 
 The fallback value if the key is not found.
 
 #### Call Signature
 
 ```ts
-getMetadataValue<TReturn>(key): undefined | TReturn;
+getMetadataValue<TReturn>(key): TReturn | undefined;
 ```
 
 Get data from metadata.
@@ -358,7 +366,7 @@ The key to retrieve from metadata.
 
 ##### Returns
 
-`undefined` \| `TReturn`
+`TReturn` \| `undefined`
 
 The value associated with the key or the fallback.
 
@@ -506,9 +514,9 @@ Add data to metadata.
 
 ##### key
 
-The key or object to add to metadata.
+`string` \| `Record`\<`string`, `unknown`\>
 
-`string` | `Record`\<`string`, `unknown`\>
+The key or object to add to metadata.
 
 ##### value?
 

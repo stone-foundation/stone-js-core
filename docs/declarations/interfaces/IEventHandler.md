@@ -5,6 +5,8 @@ Represents an event handler for processing incoming events and returning outgoin
 
 ## Template
 
+**TEvent,**
+
 UResponse
 
 ## Type Parameters

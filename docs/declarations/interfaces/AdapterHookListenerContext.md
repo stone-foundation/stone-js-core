@@ -23,7 +23,7 @@ blueprint: IBlueprint;
 ### context?
 
 ```ts
-optional context: AdapterContextType;
+optional context?: AdapterContextType;
 ```
 
 ***
@@ -31,5 +31,5 @@ optional context: AdapterContextType;
 ### error?
 
 ```ts
-optional error: any;
+optional error?: any;
 ```

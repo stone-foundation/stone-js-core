@@ -6,7 +6,7 @@ Represents a generic logging interface, which can either be a native console obj
 
 ## Properties
 
-### debug()
+### debug
 
 ```ts
 debug: (message, ...optionalParams) => void;
@@ -34,7 +34,7 @@ Optional parameters to log.
 
 ***
 
-### error()
+### error
 
 ```ts
 error: (message, ...optionalParams) => void;
@@ -62,7 +62,7 @@ Optional parameters to log.
 
 ***
 
-### info()
+### info
 
 ```ts
 info: (message, ...optionalParams) => void;
@@ -90,10 +90,10 @@ Optional parameters to log.
 
 ***
 
-### log()?
+### log?
 
 ```ts
-optional log: (message, ...optionalParams) => void;
+optional log?: (message, ...optionalParams) => void;
 ```
 
 Logs general messages, similar to `info` but less specific.
@@ -118,10 +118,10 @@ Optional parameters to log.
 
 ***
 
-### trace()?
+### trace?
 
 ```ts
-optional trace: (message, ...optionalParams) => void;
+optional trace?: (message, ...optionalParams) => void;
 ```
 
 Logs trace-level messages, providing the most detailed information, usually for diagnostic purposes.
@@ -146,7 +146,7 @@ Optional parameters to log.
 
 ***
 
-### warn()
+### warn
 
 ```ts
 warn: (message, ...optionalParams) => void;

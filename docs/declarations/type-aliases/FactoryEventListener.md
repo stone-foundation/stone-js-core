@@ -1,4 +1,4 @@
-# Type Alias: FactoryEventListener()\<TEvent\>
+# Type Alias: FactoryEventListener\<TEvent\>
 
 ```ts
 type FactoryEventListener<TEvent> = (container) => FunctionalEventListener<TEvent>;
@@ -16,9 +16,9 @@ Represents a FactoryEventListener type.
 
 ### container
 
-The dependency injection container.
+`IContainer` \| `any`
 
-`IContainer` | `any`
+The dependency injection container.
 
 ## Returns
 

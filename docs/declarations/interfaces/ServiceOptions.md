@@ -20,7 +20,7 @@ Can be a single alias or an array of aliases.
 ### singleton?
 
 ```ts
-optional singleton: boolean;
+optional singleton?: boolean;
 ```
 
 Whether the service should be treated as a singleton.

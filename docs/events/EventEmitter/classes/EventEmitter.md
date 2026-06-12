@@ -36,9 +36,9 @@ Emits an event, triggering all associated listeners.
 
 ##### event
 
-The event name or an instance of Event.
+`string` \| `symbol` \| `TEvent`
 
-`string` | `symbol` | `TEvent`
+The event name or an instance of Event.
 
 ##### args?
 

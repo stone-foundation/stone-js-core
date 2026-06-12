@@ -1,7 +1,7 @@
 # Function: Configuration()
 
 ```ts
-function Configuration<T>(options): ClassDecorator;
+function Configuration<T>(options?): ClassDecorator;
 ```
 
 Configuration decorator to set imperative configuration.
@@ -14,7 +14,7 @@ Configuration decorator to set imperative configuration.
 
 ## Parameters
 
-### options
+### options?
 
 [`ConfigurationOptions`](../interfaces/ConfigurationOptions.md) = `{}`
 

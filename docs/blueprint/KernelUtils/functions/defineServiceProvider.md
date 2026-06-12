@@ -7,9 +7,13 @@ It supports both class-based and factory-based providers.
 
 ## Param
 
+**module**
+
 The service provider (factory function or class).
 
 ## Param
+
+**options**
 
 Optional flag to indicate if it's a factory.
 

@@ -22,4 +22,6 @@ Represents an event handler which can either be a simple function or a lifecycle
 
 ## Template
 
+**TEvent,**
+
 UResponse

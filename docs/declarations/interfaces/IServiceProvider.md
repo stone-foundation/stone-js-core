@@ -8,10 +8,10 @@ of this interface are expected to define these lifecycle methods as needed.
 
 ## Properties
 
-### boot()?
+### boot?
 
 ```ts
-optional boot: () => Promiseable<void>;
+optional boot?: () => Promiseable<void>;
 ```
 
 Boots the provider after registration. This method is used to initialize services that need to be started.
@@ -22,10 +22,10 @@ Boots the provider after registration. This method is used to initialize service
 
 ***
 
-### mustSkip()?
+### mustSkip?
 
 ```ts
-optional mustSkip: () => Promiseable<boolean>;
+optional mustSkip?: () => Promiseable<boolean>;
 ```
 
 Skip this provider.
@@ -36,10 +36,10 @@ Skip this provider.
 
 ***
 
-### register()?
+### register?
 
 ```ts
-optional register: () => Promiseable<void>;
+optional register?: () => Promiseable<void>;
 ```
 
 Registers the provider into the system. Typically used for adding services or bindings to the container.

@@ -6,6 +6,8 @@ Represents a metadata object for an app event handler.
 
 ## Template
 
+**TEvent,**
+
 UResponse
 
 ## Type Parameters
@@ -23,7 +25,7 @@ UResponse
 ### isClass?
 
 ```ts
-optional isClass: boolean;
+optional isClass?: boolean;
 ```
 
 ***
@@ -31,7 +33,7 @@ optional isClass: boolean;
 ### isFactory?
 
 ```ts
-optional isFactory: boolean;
+optional isFactory?: boolean;
 ```
 
 ***

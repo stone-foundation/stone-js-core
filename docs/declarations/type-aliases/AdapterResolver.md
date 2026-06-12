@@ -1,4 +1,4 @@
-# Type Alias: AdapterResolver()
+# Type Alias: AdapterResolver
 
 ```ts
 type AdapterResolver = (blueprint) => IAdapter;

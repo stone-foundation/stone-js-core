@@ -21,7 +21,7 @@ event: string;
 ### isClass?
 
 ```ts
-optional isClass: boolean;
+optional isClass?: boolean;
 ```
 
 ***
@@ -29,7 +29,7 @@ optional isClass: boolean;
 ### isFactory?
 
 ```ts
-optional isFactory: boolean;
+optional isFactory?: boolean;
 ```
 
 ***

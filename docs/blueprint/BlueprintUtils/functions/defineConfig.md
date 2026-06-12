@@ -14,9 +14,10 @@ It ensures that all necessary properties are available while allowing user custo
 
 ### configuration
 
-The user-defined blueprint configuration.
+  \| [`FunctionalConfiguration`](../../../declarations/type-aliases/FunctionalConfiguration.md)
+  \| `Partial`\<`Record`\<`"configure"` \| `"afterConfigure"`, [`FunctionalConfiguration`](../../../declarations/type-aliases/FunctionalConfiguration.md)\>\>
 
-[`FunctionalConfiguration`](../../../declarations/type-aliases/FunctionalConfiguration.md) | `Partial`\<`Record`\<`"configure"` \| `"afterConfigure"`, [`FunctionalConfiguration`](../../../declarations/type-aliases/FunctionalConfiguration.md)\>\>
+The user-defined blueprint configuration.
 
 ## Returns
 

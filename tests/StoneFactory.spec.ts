@@ -252,5 +252,103 @@ describe('StoneFactory', () => {
       const live = factory.blueprint.get('stone.liveConfigurations', [])
       expect(live[0]).toEqual(expect.objectContaining({ module: LiveConfig }))
     })
+
+    it('should execute afterConfigure hook when blueprint is prepared', async () => {
+      const afterConfigure = vi.fn()
+
+      class ConfigClass {
+        configure (): void {}
+
+        afterConfigure = afterConfigure
+
+        public static [MetadataSymbol] = {
+          [CONFIGURATION_KEY]: { live: false }
+        }
+      }
+
+      const factory = StoneFactory.create({ modules: [ConfigClass] })
+
+      // @ts-expect-error private
+      await factory.initBlueprint()
+
+      // @ts-expect-error private
+      const hooks = factory.blueprint.get<((k: BlueprintContext) => Promise<void>)[]>(
+        'stone.lifecycleHooks.onBlueprintPrepared',
+        []
+      )
+
+      expect(hooks).toHaveLength(1)
+
+      // @ts-expect-error private
+      const blueprint = factory.blueprint
+
+      await hooks[0]({ blueprint })
+
+      expect(afterConfigure).toHaveBeenCalledTimes(1)
+      expect(afterConfigure).toHaveBeenCalledWith(blueprint)
+    })
+  })
+
+  it('should ignore modules that are neither blueprint nor constructor', async () => {
+    const factory = StoneFactory.create({
+      modules: ['random-string', 123, true]
+    })
+
+    // @ts-expect-error private
+    await factory.initBlueprint()
+
+    // simplement vérifier qu'aucune erreur n'est lancée
+    // et qu'aucune configuration n'a été ajoutée
+    // @ts-expect-error private
+    expect(factory.blueprint.get('stone.lifecycleHooks')).toBeUndefined()
+  })
+
+  it('should ignore empty lifecycle hook options', async () => {
+    class EmptyHook {
+      methodRef (): void {}
+
+      public static [MetadataSymbol] = {
+        [LIFECYCLE_HOOK_KEY]: [
+          undefined,
+          null,
+          {}
+        ]
+      }
+    }
+
+    const factory = stoneApp({ modules: [EmptyHook] })
+
+    // @ts-expect-error private
+    await factory.initBlueprint()
+
+    // @ts-expect-error private
+    const hooks = factory.blueprint.get('stone.lifecycleHooks.onInit', [])
+
+    expect(hooks).toEqual([])
+  })
+
+  it('should not register onBlueprintPrepared hook when afterConfigure is missing', async () => {
+    class ConfigClass {
+      configure (): void {}
+
+      public static [MetadataSymbol] = {
+        [CONFIGURATION_KEY]: { live: false }
+      }
+    }
+
+    const factory = StoneFactory.create({
+      modules: [ConfigClass]
+    })
+
+    // @ts-expect-error private
+    await factory.initBlueprint()
+
+    // @ts-expect-error private
+    const hooks = factory.blueprint.get(
+      'stone.lifecycleHooks.onBlueprintPrepared',
+      []
+    )
+
+    expect(hooks).toEqual([])
   })
 })

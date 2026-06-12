@@ -21,4 +21,6 @@ Represents a mixed pipe type for adapters.
 
 ## Template
 
+**AdapterContextType,**
+
 RawResponseType

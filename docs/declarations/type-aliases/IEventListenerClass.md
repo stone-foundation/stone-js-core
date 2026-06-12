@@ -1,4 +1,4 @@
-# Type Alias: IEventListenerClass()\<TEvent\>
+# Type Alias: IEventListenerClass\<TEvent\>
 
 ```ts
 type IEventListenerClass<TEvent> = (...args) => IEventListener<TEvent>;

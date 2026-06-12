@@ -12,7 +12,7 @@ Represents a wrapper for building raw responses with specific options and a resp
 
 ## Properties
 
-### respond()
+### respond
 
 ```ts
 respond: () => Promiseable<TResponse>;

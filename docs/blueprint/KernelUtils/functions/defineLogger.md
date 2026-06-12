@@ -4,9 +4,13 @@ Registers a logger (class-based or factory-based) into the Stone blueprint.
 
 ## Param
 
+**module**
+
 Either a logger class or factory function.
 
 ## Param
+
+**options**
 
 Optional configuration, including log level and isFactory flag.
 

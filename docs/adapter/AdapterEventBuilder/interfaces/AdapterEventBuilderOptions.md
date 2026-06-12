@@ -24,14 +24,14 @@ The type of the final object that will be built.
 ### options?
 
 ```ts
-optional options: V;
+optional options?: V;
 ```
 
 The initial options used for building the object. This is optional.
 
 ***
 
-### resolver()
+### resolver
 
 ```ts
 resolver: (options) => R;

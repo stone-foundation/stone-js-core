@@ -7,9 +7,13 @@ It supports functional, factory, and class-based middleware.
 
 ## Param
 
+**module**
+
 The middleware implementation (function, factory, or class).
 
 ## Param
+
+**options**
 
 Optional middleware options and factory indicator.
 

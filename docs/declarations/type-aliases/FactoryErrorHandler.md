@@ -1,4 +1,4 @@
-# Type Alias: FactoryErrorHandler()\<TEvent, UResponse\>
+# Type Alias: FactoryErrorHandler\<TEvent, UResponse\>
 
 ```ts
 type FactoryErrorHandler<TEvent, UResponse> = (container) => FunctionalErrorHandler<TEvent, UResponse>;
@@ -22,9 +22,9 @@ Represents a factory function that creates an error handler function.
 
 ### container
 
-The dependency injection container.
+`IContainer` \| `any`
 
-`IContainer` | `any`
+The dependency injection container.
 
 ## Returns
 

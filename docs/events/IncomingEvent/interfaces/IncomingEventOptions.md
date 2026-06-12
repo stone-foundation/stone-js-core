@@ -17,7 +17,7 @@ IncomingEventOptions.
 ### locale?
 
 ```ts
-optional locale: string;
+optional locale?: string;
 ```
 
 ***
@@ -25,7 +25,7 @@ optional locale: string;
 ### metadata?
 
 ```ts
-optional metadata: Record<string, unknown>;
+optional metadata?: Record<string, unknown>;
 ```
 
 #### Inherited from
@@ -49,7 +49,7 @@ source: IncomingEventSource;
 ### timeStamp?
 
 ```ts
-optional timeStamp: number;
+optional timeStamp?: number;
 ```
 
 #### Inherited from
@@ -61,7 +61,7 @@ optional timeStamp: number;
 ### type?
 
 ```ts
-optional type: string;
+optional type?: string;
 ```
 
 #### Inherited from

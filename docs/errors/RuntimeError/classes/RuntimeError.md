@@ -21,7 +21,7 @@ Mr. Stone <evensstone@gmail.com>
 ### Constructor
 
 ```ts
-new RuntimeError(message, options): RuntimeError;
+new RuntimeError(message, options?): RuntimeError;
 ```
 
 Create a RuntimeError.
@@ -34,7 +34,7 @@ Create a RuntimeError.
 
 The message to log.
 
-##### options
+##### options?
 
 [`ErrorOptions`](../../../declarations/interfaces/ErrorOptions.md) = `{}`
 
@@ -55,7 +55,7 @@ Error.constructor
 ### cause?
 
 ```ts
-readonly optional cause: Error;
+readonly optional cause?: Error;
 ```
 
 #### Overrides
@@ -69,7 +69,7 @@ Error.cause
 ### code?
 
 ```ts
-readonly optional code: string;
+readonly optional code?: string;
 ```
 
 ***
@@ -77,7 +77,7 @@ readonly optional code: string;
 ### metadata?
 
 ```ts
-readonly optional metadata: unknown;
+readonly optional metadata?: unknown;
 ```
 
 ## Methods
@@ -85,14 +85,14 @@ readonly optional metadata: unknown;
 ### toString()
 
 ```ts
-toString(multiline): string;
+toString(multiline?): string;
 ```
 
 Converts the error to a formatted string representation.
 
 #### Parameters
 
-##### multiline
+##### multiline?
 
 `boolean` = `false`
 
@@ -109,7 +109,7 @@ A formatted error string.
 ### create()
 
 ```ts
-static create<T>(message, options): T;
+static create<T>(message, options?): T;
 ```
 
 Create a RuntimeError.
@@ -126,7 +126,7 @@ Create a RuntimeError.
 
 `string`
 
-##### options
+##### options?
 
 [`ErrorOptions`](../../../declarations/interfaces/ErrorOptions.md) = `{}`
 

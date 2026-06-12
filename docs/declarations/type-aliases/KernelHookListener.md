@@ -1,4 +1,4 @@
-# Type Alias: KernelHookListener()
+# Type Alias: KernelHookListener
 
 ```ts
 type KernelHookListener = (container?) => Promiseable<void>;
@@ -12,7 +12,7 @@ Represents a listener hook that can either be synchronous or asynchronous.
 
 ### container?
 
-`IContainer` | `any`
+`IContainer` \| `any`
 
 ## Returns
 

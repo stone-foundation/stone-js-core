@@ -1,4 +1,4 @@
-# Type Alias: ProposalMethodDecorator()\<T\>
+# Type Alias: ProposalMethodDecorator\<T\>
 
 ```ts
 type ProposalMethodDecorator<T> = <TFunction>(target, context) => TFunction | undefined;

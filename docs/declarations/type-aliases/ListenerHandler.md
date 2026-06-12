@@ -1,4 +1,4 @@
-# Type Alias: ListenerHandler()\<T\>
+# Type Alias: ListenerHandler\<T\>
 
 ```ts
 type ListenerHandler<T> = (event) => Promiseable<void>;

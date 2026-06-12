@@ -1,4 +1,4 @@
-# Type Alias: AdapterEventHandlerResolver()\<TEvent, UResponse\>
+# Type Alias: AdapterEventHandlerResolver\<TEvent, UResponse\>
 
 ```ts
 type AdapterEventHandlerResolver<TEvent, UResponse> = (blueprint) => AdapterEventHandlerType<TEvent, UResponse>;

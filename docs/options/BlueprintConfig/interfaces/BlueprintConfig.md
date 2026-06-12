@@ -20,7 +20,7 @@ It includes middleware for building the blueprint and the default priority for p
 ### defaultMiddlewarePriority?
 
 ```ts
-optional defaultMiddlewarePriority: number;
+optional defaultMiddlewarePriority?: number;
 ```
 
 The default priority for pipes, used when a specific pipe does not have an explicitly set priority.

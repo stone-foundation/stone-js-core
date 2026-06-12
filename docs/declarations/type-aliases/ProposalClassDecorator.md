@@ -1,4 +1,4 @@
-# Type Alias: ProposalClassDecorator()\<TClass\>
+# Type Alias: ProposalClassDecorator\<TClass\>
 
 ```ts
 type ProposalClassDecorator<TClass> = <TFunction>(target, context) => TFunction | undefined;

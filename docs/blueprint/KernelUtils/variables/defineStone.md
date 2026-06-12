@@ -1,4 +1,4 @@
-# Variable: defineStone()
+# Variable: defineStone
 
 ```ts
 const defineStone: {
