@@ -1,7 +1,7 @@
 # Function: Service()
 
 ```ts
-function Service<T>(options): ClassDecorator;
+function Service<T>(options?): ClassDecorator;
 ```
 
 Service decorator to mark a class as a service and automatically bind it to the container.
@@ -17,7 +17,7 @@ making them easily injectable and manageable by the service container.
 
 ## Parameters
 
-### options
+### options?
 
 `Partial`\<[`ServiceOptions`](../../../declarations/interfaces/ServiceOptions.md)\> = `{}`
 

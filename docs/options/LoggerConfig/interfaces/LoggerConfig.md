@@ -11,7 +11,7 @@ output styling, and the logger resolver.
 ### level?
 
 ```ts
-optional level: LogLevel;
+optional level?: LogLevel;
 ```
 
 The log level for the logger.
@@ -33,7 +33,7 @@ Common values include:
 ### resolver?
 
 ```ts
-optional resolver: LoggerResolver;
+optional resolver?: LoggerResolver;
 ```
 
 A resolver function that returns a logger instance.
@@ -50,7 +50,7 @@ This function provides a way to inject a logger that suits specific requirements
 ### useColors?
 
 ```ts
-optional useColors: boolean;
+optional useColors?: boolean;
 ```
 
 Whether to enable color output in the logs.
@@ -67,7 +67,7 @@ or when using third-party loggers such as Pino.
 ### useTimestamp?
 
 ```ts
-optional useTimestamp: boolean;
+optional useTimestamp?: boolean;
 ```
 
 Defines whether to include a timestamp in log messages.

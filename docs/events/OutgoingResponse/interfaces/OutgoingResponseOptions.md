@@ -17,7 +17,7 @@ OutgoingResponseOptions.
 ### content?
 
 ```ts
-optional content: unknown;
+optional content?: unknown;
 ```
 
 ***
@@ -25,7 +25,7 @@ optional content: unknown;
 ### metadata?
 
 ```ts
-optional metadata: Record<string, unknown>;
+optional metadata?: Record<string, unknown>;
 ```
 
 #### Inherited from
@@ -37,7 +37,7 @@ optional metadata: Record<string, unknown>;
 ### source?
 
 ```ts
-optional source: object;
+optional source?: object;
 ```
 
 #### Inherited from
@@ -49,7 +49,7 @@ optional source: object;
 ### statusCode?
 
 ```ts
-optional statusCode: number;
+optional statusCode?: number;
 ```
 
 ***
@@ -57,7 +57,7 @@ optional statusCode: number;
 ### statusMessage?
 
 ```ts
-optional statusMessage: string;
+optional statusMessage?: string;
 ```
 
 ***
@@ -65,7 +65,7 @@ optional statusMessage: string;
 ### timeStamp?
 
 ```ts
-optional timeStamp: number;
+optional timeStamp?: number;
 ```
 
 #### Inherited from
@@ -77,7 +77,7 @@ optional timeStamp: number;
 ### type?
 
 ```ts
-optional type: string;
+optional type?: string;
 ```
 
 #### Inherited from

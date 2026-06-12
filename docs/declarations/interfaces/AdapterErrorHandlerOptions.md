@@ -9,7 +9,7 @@ This interface defines the AdapterErrorHandler options for marking a class as a 
 ### adapterAlias?
 
 ```ts
-optional adapterAlias: string;
+optional adapterAlias?: string;
 ```
 
 The alias name for which the AdapterErrorHandler is used.
@@ -29,7 +29,7 @@ Additional configuration settings for the AdapterErrorHandler, if needed.
 ### platform?
 
 ```ts
-optional platform: string;
+optional platform?: string;
 ```
 
 The platform name for which the AdapterErrorHandler is used.

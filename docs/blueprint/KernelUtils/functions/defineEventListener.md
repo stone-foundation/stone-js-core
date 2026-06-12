@@ -7,9 +7,13 @@ into the blueprint. The event name must be provided in `options.event`.
 
 ## Param
 
+**module**
+
 The listener implementation (function, class, or factory).
 
 ## Param
+
+**options**
 
 Listener options including event name and factory flag.
 

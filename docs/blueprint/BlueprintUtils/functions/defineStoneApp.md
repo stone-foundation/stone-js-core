@@ -4,13 +4,19 @@ Defines a Stone app using a function-based, factory-based or class-based main ha
 
 ## Param
 
+**moduleOrOptions**
+
 A function, factory function or class constructor for the main page.
 
 ## Param
 
+**optionsOrBlueprints**
+
 Optional application-level configuration.
 
 ## Param
+
+**maybeBlueprints**
 
 Additional blueprints to merge.
 

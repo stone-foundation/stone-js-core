@@ -6,6 +6,8 @@ Represents an error handler that provides methods to report and render errors.
 
 ## Template
 
+**TEvent,**
+
 UResponse
 
 ## Type Parameters

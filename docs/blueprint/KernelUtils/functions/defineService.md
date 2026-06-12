@@ -7,9 +7,13 @@ It supports both factory and class-based service definitions.
 
 ## Param
 
+**module**
+
 The service class or factory function.
 
 ## Param
+
+**options**
 
 Service configuration options including alias and factory flag.
 

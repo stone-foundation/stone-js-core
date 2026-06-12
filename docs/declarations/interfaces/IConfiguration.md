@@ -6,6 +6,8 @@ Represents a configuration object that can be used to configure the system.
 
 ## Param
 
+**blueprint**
+
 The blueprint to configure.
 
 ## Type Parameters
@@ -19,7 +21,7 @@ The blueprint to configure.
 ### afterConfigure?
 
 ```ts
-optional afterConfigure: FunctionalConfiguration<TValues>;
+optional afterConfigure?: FunctionalConfiguration<TValues>;
 ```
 
 ***
@@ -27,5 +29,5 @@ optional afterConfigure: FunctionalConfiguration<TValues>;
 ### configure?
 
 ```ts
-optional configure: FunctionalConfiguration<TValues>;
+optional configure?: FunctionalConfiguration<TValues>;
 ```

@@ -1,4 +1,4 @@
-# Type Alias: BlueprintHookListener()\<BlueprintType, ContextType\>
+# Type Alias: BlueprintHookListener\<BlueprintType, ContextType\>
 
 ```ts
 type BlueprintHookListener<BlueprintType, ContextType> = (context) => Promiseable<void>;

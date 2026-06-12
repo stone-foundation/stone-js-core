@@ -6,7 +6,7 @@ Represents an adapter with a run method that returns a promise of type Execution
 
 ## Properties
 
-### run()
+### run
 
 ```ts
 run: <ExecutionResultType>() => Promise<ExecutionResultType>;

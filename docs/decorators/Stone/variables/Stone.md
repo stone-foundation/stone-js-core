@@ -1,4 +1,4 @@
-# Variable: Stone()
+# Variable: Stone
 
 ```ts
 const Stone: <T>(options) => ClassDecorator = Service;
@@ -22,7 +22,7 @@ making them easily injectable and manageable by the service container.
 
 ## Parameters
 
-### options
+### options?
 
 `Partial`\<[`ServiceOptions`](../../../declarations/interfaces/ServiceOptions.md)\> = `{}`
 
@@ -44,6 +44,8 @@ class MyService {
 ```
 
 ## Param
+
+**options**
 
 The configuration options for the service.
 

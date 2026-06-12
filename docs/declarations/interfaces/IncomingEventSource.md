@@ -37,7 +37,7 @@ The raw event object from the originating platform.
 ### rawResponse?
 
 ```ts
-optional rawResponse: unknown;
+optional rawResponse?: unknown;
 ```
 
 The raw response object from the originating platform.

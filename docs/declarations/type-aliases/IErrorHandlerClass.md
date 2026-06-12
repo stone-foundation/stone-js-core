@@ -1,4 +1,4 @@
-# Type Alias: IErrorHandlerClass()\<TEvent, UResponse\>
+# Type Alias: IErrorHandlerClass\<TEvent, UResponse\>
 
 ```ts
 type IErrorHandlerClass<TEvent, UResponse> = (...args) => IErrorHandler<TEvent, UResponse>;

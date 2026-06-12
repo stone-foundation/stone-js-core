@@ -43,7 +43,7 @@ The executionContext of type ExecutionContextType.
 ### incomingEvent?
 
 ```ts
-optional incomingEvent: IncomingEventType;
+optional incomingEvent?: IncomingEventType;
 ```
 
 The incomingEvent associated with the executionContext.
@@ -63,7 +63,7 @@ The incomingEventBuilder.
 ### outgoingResponse?
 
 ```ts
-optional outgoingResponse: OutgoingResponseType;
+optional outgoingResponse?: OutgoingResponseType;
 ```
 
 The outgoingResponse associated with the executionContext.
@@ -83,7 +83,7 @@ The rawEvent of type RawEventType.
 ### rawResponse?
 
 ```ts
-optional rawResponse: RawResponseType;
+optional rawResponse?: RawResponseType;
 ```
 
 The rawResponse of type RawResponseType.

@@ -1,4 +1,4 @@
-# Type Alias: FunctionalEventHandler()\<TEvent, UResponse\>
+# Type Alias: FunctionalEventHandler\<TEvent, UResponse\>
 
 ```ts
 type FunctionalEventHandler<TEvent, UResponse> = (incomingEvent) => Promiseable<UResponse>;

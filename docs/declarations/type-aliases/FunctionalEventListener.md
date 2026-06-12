@@ -1,4 +1,4 @@
-# Type Alias: FunctionalEventListener()\<TEvent\>
+# Type Alias: FunctionalEventListener\<TEvent\>
 
 ```ts
 type FunctionalEventListener<TEvent> = (event) => Promiseable<void>;

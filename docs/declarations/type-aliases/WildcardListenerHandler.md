@@ -1,4 +1,4 @@
-# Type Alias: WildcardListenerHandler()\<T, U\>
+# Type Alias: WildcardListenerHandler\<T, U\>
 
 ```ts
 type WildcardListenerHandler<T, U> = (eventName, event) => Promiseable<void>;

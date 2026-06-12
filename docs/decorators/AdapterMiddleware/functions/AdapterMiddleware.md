@@ -1,7 +1,7 @@
 # Function: AdapterMiddleware()
 
 ```ts
-function AdapterMiddleware<T>(options): ClassDecorator;
+function AdapterMiddleware<T>(options?): ClassDecorator;
 ```
 
 AdapterMiddleware decorator to mark a class as middleware within the Stone.js framework.
@@ -17,7 +17,7 @@ as part of the request/response lifecycle or other layers such as adapter, kerne
 
 ## Parameters
 
-### options
+### options?
 
 [`AdapterMiddlewareOptions`](../../../declarations/interfaces/AdapterMiddlewareOptions.md) = `{}`
 

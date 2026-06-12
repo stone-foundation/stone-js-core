@@ -7,9 +7,13 @@ an error handler for a specific adapter based on platform or alias.
 
 ## Param
 
+**module**
+
 The handler function, factory, or class.
 
 ## Param
+
+**options**
 
 Options including `platform`, `adapterAlias`, and `error` type(s) to handle.
 

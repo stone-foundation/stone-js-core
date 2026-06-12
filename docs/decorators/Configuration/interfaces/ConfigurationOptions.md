@@ -9,7 +9,7 @@ This interface defines the configuration options for marking a class as a Config
 ### live?
 
 ```ts
-optional live: boolean;
+optional live?: boolean;
 ```
 
 Live configurations are loaded on each request.

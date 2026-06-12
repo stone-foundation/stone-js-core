@@ -19,7 +19,7 @@ This interface defines the configuration options for marking a class as the main
 ### adapter?
 
 ```ts
-optional adapter: Partial<AdapterConfig<any, any, any, IncomingEvent, any, OutgoingResponse>>;
+optional adapter?: Partial<AdapterConfig<any, any, any, IncomingEvent, any, OutgoingResponse>>;
 ```
 
 Current Adapter configurations for the application.
@@ -36,7 +36,7 @@ Partial.adapter
 ### adapters?
 
 ```ts
-optional adapters: AdapterConfig<any, any, any, IncomingEvent, any, OutgoingResponse>[];
+optional adapters?: AdapterConfig<any, any, any, IncomingEvent, any, OutgoingResponse>[];
 ```
 
 Adapter configurations for the application.
@@ -53,7 +53,7 @@ Partial.adapters
 ### aliases?
 
 ```ts
-optional aliases: Record<string, any>;
+optional aliases?: Record<string, any>;
 ```
 
 Class aliases to be registered when the application starts.
@@ -70,23 +70,21 @@ Partial.aliases
 ### blueprint?
 
 ```ts
-optional blueprint: BlueprintConfig<IBlueprint, any>;
+optional blueprint?: BlueprintConfig<IBlueprint, any>;
 ```
 
 Configuration options for building the application blueprint, including middleware and pipe priorities.
 
 #### Inherited from
 
-```ts
-Partial.blueprint
-```
+[`AppConfig`](../../../options/StoneBlueprint/interfaces/AppConfig.md).[`blueprint`](../../../options/StoneBlueprint/interfaces/AppConfig.md#blueprint)
 
 ***
 
 ### debug?
 
 ```ts
-optional debug: boolean;
+optional debug?: boolean;
 ```
 
 Determines if the application is in debug mode.
@@ -94,16 +92,14 @@ When enabled, detailed error messages with stack traces will be shown.
 
 #### Inherited from
 
-```ts
-Partial.debug
-```
+[`AppConfig`](../../../options/StoneBlueprint/interfaces/AppConfig.md).[`debug`](../../../options/StoneBlueprint/interfaces/AppConfig.md#debug)
 
 ***
 
 ### env?
 
 ```ts
-optional env: Environment;
+optional env?: Environment;
 ```
 
 The current environment in which the application is running.
@@ -111,32 +107,28 @@ Possible values are development, production, and test.
 
 #### Inherited from
 
-```ts
-Partial.env
-```
+[`AppConfig`](../../../options/StoneBlueprint/interfaces/AppConfig.md).[`env`](../../../options/StoneBlueprint/interfaces/AppConfig.md#env)
 
 ***
 
 ### fallback\_locale?
 
 ```ts
-optional fallback_locale: string;
+optional fallback_locale?: string;
 ```
 
 The fallback locale used when a translation for the default locale is unavailable.
 
 #### Inherited from
 
-```ts
-Partial.fallback_locale
-```
+[`AppConfig`](../../../options/StoneBlueprint/interfaces/AppConfig.md).[`fallback_locale`](../../../options/StoneBlueprint/interfaces/AppConfig.md#fallback_locale)
 
 ***
 
 ### kernel?
 
 ```ts
-optional kernel: KernelConfig<IncomingEvent, OutgoingResponse>;
+optional kernel?: KernelConfig<IncomingEvent, OutgoingResponse>;
 ```
 
 Kernel configurations for the application.
@@ -152,7 +144,7 @@ Partial.kernel
 ### lifecycleHooks?
 
 ```ts
-optional lifecycleHooks: LifecycleHookType<IBlueprint, any, any, IncomingEvent, OutgoingResponse>;
+optional lifecycleHooks?: LifecycleHookType<IBlueprint, any, any, IncomingEvent, OutgoingResponse>;
 ```
 
 Lifecycle hooks for the application.
@@ -169,7 +161,7 @@ Partial.lifecycleHooks
 ### listeners?
 
 ```ts
-optional listeners: MetaEventListener<any>[];
+optional listeners?: MetaEventListener<any>[];
 ```
 
 Event listeners to be automatically registered when the application starts.
@@ -186,7 +178,7 @@ Partial.listeners
 ### liveConfigurations?
 
 ```ts
-optional liveConfigurations: MixedConfiguration[];
+optional liveConfigurations?: MixedConfiguration[];
 ```
 
 Live configurations are loaded at each request.
@@ -204,23 +196,21 @@ Partial.liveConfigurations
 ### locale?
 
 ```ts
-optional locale: string;
+optional locale?: string;
 ```
 
 The default locale for the application.
 
 #### Inherited from
 
-```ts
-Partial.locale
-```
+[`AppConfig`](../../../options/StoneBlueprint/interfaces/AppConfig.md).[`locale`](../../../options/StoneBlueprint/interfaces/AppConfig.md#locale)
 
 ***
 
 ### logger?
 
 ```ts
-optional logger: LoggerConfig;
+optional logger?: LoggerConfig;
 ```
 
 Logging settings, including the logger instance and error reporting configurations.
@@ -236,7 +226,7 @@ Partial.logger
 ### middleware?
 
 ```ts
-optional middleware: MixedPipe<IncomingEvent, OutgoingResponse>[];
+optional middleware?: MixedPipe<IncomingEvent, OutgoingResponse>[];
 ```
 
 Middleware configuration options for specific stages of the application lifecycle.
@@ -252,23 +242,21 @@ Partial.middleware
 ### name?
 
 ```ts
-optional name: string;
+optional name?: string;
 ```
 
 The name of the application.
 
 #### Inherited from
 
-```ts
-Partial.name
-```
+[`AppConfig`](../../../options/StoneBlueprint/interfaces/AppConfig.md).[`name`](../../../options/StoneBlueprint/interfaces/AppConfig.md#name)
 
 ***
 
 ### providers?
 
 ```ts
-optional providers: MixedServiceProvider[];
+optional providers?: MixedServiceProvider[];
 ```
 
 Service providers to be automatically loaded for each request to the application.
@@ -284,7 +272,7 @@ Partial.providers
 ### secret?
 
 ```ts
-optional secret: string;
+optional secret?: string;
 ```
 
 A secret key used for encryption purposes throughout the application.
@@ -292,16 +280,14 @@ This key should be kept secure.
 
 #### Inherited from
 
-```ts
-Partial.secret
-```
+[`AppConfig`](../../../options/StoneBlueprint/interfaces/AppConfig.md).[`secret`](../../../options/StoneBlueprint/interfaces/AppConfig.md#secret)
 
 ***
 
 ### services?
 
 ```ts
-optional services: MetaService[];
+optional services?: MetaService[];
 ```
 
 Services to be automatically registered when the application starts.
@@ -317,7 +303,7 @@ Partial.services
 ### subscribers?
 
 ```ts
-optional subscribers: MixedEventSubscriber[];
+optional subscribers?: MixedEventSubscriber[];
 ```
 
 Subscribers to be automatically registered when the application starts.
@@ -334,13 +320,11 @@ Partial.subscribers
 ### timezone?
 
 ```ts
-optional timezone: string;
+optional timezone?: string;
 ```
 
 The default timezone for the application.
 
 #### Inherited from
 
-```ts
-Partial.timezone
-```
+[`AppConfig`](../../../options/StoneBlueprint/interfaces/AppConfig.md).[`timezone`](../../../options/StoneBlueprint/interfaces/AppConfig.md#timezone)

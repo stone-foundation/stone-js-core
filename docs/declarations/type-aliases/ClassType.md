@@ -1,4 +1,4 @@
-# Type Alias: ClassType()\<Type\>
+# Type Alias: ClassType\<Type\>
 
 ```ts
 type ClassType<Type> = (...args) => Type;

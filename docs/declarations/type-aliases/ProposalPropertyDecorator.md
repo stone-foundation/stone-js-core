@@ -1,4 +1,4 @@
-# Type Alias: ProposalPropertyDecorator()
+# Type Alias: ProposalPropertyDecorator
 
 ```ts
 type ProposalPropertyDecorator = (target, context) => (initialValue) => unknown | undefined;
@@ -27,16 +27,4 @@ The context object providing metadata about the field.
 
 An initializer function for the property value.
 
-```ts
-(initialValue): unknown | undefined;
-```
-
-### Parameters
-
-#### initialValue
-
-`unknown`
-
-### Returns
-
-`unknown` \| `undefined`
+(`initialValue`) => `unknown` \| `undefined`

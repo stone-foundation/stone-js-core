@@ -4,9 +4,13 @@ Utility function to define an event handler.
 
 ## Param
 
+**module**
+
 The EventHandler module.
 
 ## Param
+
+**options**
 
 The options for the EventHandler.
 

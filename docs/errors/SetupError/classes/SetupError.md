@@ -11,7 +11,7 @@ Custom error for Setup layer operations.
 ### Constructor
 
 ```ts
-new SetupError(message, options): SetupError;
+new SetupError(message, options?): SetupError;
 ```
 
 #### Parameters
@@ -20,7 +20,7 @@ new SetupError(message, options): SetupError;
 
 `string`
 
-##### options
+##### options?
 
 [`ErrorOptions`](../../../declarations/interfaces/ErrorOptions.md) = `{}`
 
@@ -37,7 +37,7 @@ new SetupError(message, options): SetupError;
 ### cause?
 
 ```ts
-readonly optional cause: Error;
+readonly optional cause?: Error;
 ```
 
 #### Inherited from
@@ -49,7 +49,7 @@ readonly optional cause: Error;
 ### code?
 
 ```ts
-readonly optional code: string;
+readonly optional code?: string;
 ```
 
 #### Inherited from
@@ -61,7 +61,7 @@ readonly optional code: string;
 ### metadata?
 
 ```ts
-readonly optional metadata: unknown;
+readonly optional metadata?: unknown;
 ```
 
 #### Inherited from
@@ -73,14 +73,14 @@ readonly optional metadata: unknown;
 ### toString()
 
 ```ts
-toString(multiline): string;
+toString(multiline?): string;
 ```
 
 Converts the error to a formatted string representation.
 
 #### Parameters
 
-##### multiline
+##### multiline?
 
 `boolean` = `false`
 
@@ -101,7 +101,7 @@ A formatted error string.
 ### create()
 
 ```ts
-static create<T>(message, options): T;
+static create<T>(message, options?): T;
 ```
 
 Create a RuntimeError.
@@ -118,7 +118,7 @@ Create a RuntimeError.
 
 `string`
 
-##### options
+##### options?
 
 [`ErrorOptions`](../../../declarations/interfaces/ErrorOptions.md) = `{}`
 

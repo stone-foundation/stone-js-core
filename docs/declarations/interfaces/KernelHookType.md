@@ -19,7 +19,7 @@ Represents a hook that can either be synchronous or asynchronous.
 ### onEvent?
 
 ```ts
-optional onEvent: KernelHookListener[];
+optional onEvent?: KernelHookListener[];
 ```
 
 ***
@@ -27,7 +27,7 @@ optional onEvent: KernelHookListener[];
 ### onEventHandled?
 
 ```ts
-optional onEventHandled: KernelHookListener[];
+optional onEventHandled?: KernelHookListener[];
 ```
 
 ***
@@ -35,7 +35,7 @@ optional onEventHandled: KernelHookListener[];
 ### onExecutingErrorHandler?
 
 ```ts
-optional onExecutingErrorHandler: KernelHookListener[];
+optional onExecutingErrorHandler?: KernelHookListener[];
 ```
 
 ***
@@ -43,7 +43,7 @@ optional onExecutingErrorHandler: KernelHookListener[];
 ### onExecutingEventHandler?
 
 ```ts
-optional onExecutingEventHandler: KernelHookListener[];
+optional onExecutingEventHandler?: KernelHookListener[];
 ```
 
 ***
@@ -51,7 +51,7 @@ optional onExecutingEventHandler: KernelHookListener[];
 ### onHandlingEvent?
 
 ```ts
-optional onHandlingEvent: KernelHookListener[];
+optional onHandlingEvent?: KernelHookListener[];
 ```
 
 ***
@@ -59,7 +59,7 @@ optional onHandlingEvent: KernelHookListener[];
 ### onInit?
 
 ```ts
-optional onInit: KernelHookListener[];
+optional onInit?: KernelHookListener[];
 ```
 
 ***
@@ -67,7 +67,7 @@ optional onInit: KernelHookListener[];
 ### onKernelMiddlewareProcessed?
 
 ```ts
-optional onKernelMiddlewareProcessed: PipelineHookListener<IncomingEventType, OutgoingResponseType, any[]>[];
+optional onKernelMiddlewareProcessed?: PipelineHookListener<IncomingEventType, OutgoingResponseType, any[]>[];
 ```
 
 ***
@@ -75,7 +75,7 @@ optional onKernelMiddlewareProcessed: PipelineHookListener<IncomingEventType, Ou
 ### onPreparingResponse?
 
 ```ts
-optional onPreparingResponse: KernelHookListener[];
+optional onPreparingResponse?: KernelHookListener[];
 ```
 
 ***
@@ -83,7 +83,7 @@ optional onPreparingResponse: KernelHookListener[];
 ### onProcessingKernelMiddleware?
 
 ```ts
-optional onProcessingKernelMiddleware: PipelineHookListener<IncomingEventType, OutgoingResponseType, any[]>[];
+optional onProcessingKernelMiddleware?: PipelineHookListener<IncomingEventType, OutgoingResponseType, any[]>[];
 ```
 
 ***
@@ -91,7 +91,7 @@ optional onProcessingKernelMiddleware: PipelineHookListener<IncomingEventType, O
 ### onResponsePrepared?
 
 ```ts
-optional onResponsePrepared: KernelHookListener[];
+optional onResponsePrepared?: KernelHookListener[];
 ```
 
 ***
@@ -99,5 +99,5 @@ optional onResponsePrepared: KernelHookListener[];
 ### onTerminate?
 
 ```ts
-optional onTerminate: KernelHookListener[];
+optional onTerminate?: KernelHookListener[];
 ```

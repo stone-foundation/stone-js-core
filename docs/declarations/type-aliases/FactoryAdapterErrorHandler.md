@@ -1,4 +1,4 @@
-# Type Alias: FactoryAdapterErrorHandler()\<RawEventType, RawResponseType, ExecutionContextType\>
+# Type Alias: FactoryAdapterErrorHandler\<RawEventType, RawResponseType, ExecutionContextType\>
 
 ```ts
 type FactoryAdapterErrorHandler<RawEventType, RawResponseType, ExecutionContextType> = (options) => FunctionalAdapterErrorHandler<RawEventType, RawResponseType, ExecutionContextType>;

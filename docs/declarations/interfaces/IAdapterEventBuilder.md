@@ -6,6 +6,8 @@ Interface representing a builder for adapters that provides methods for adding p
 
 ## Template
 
+**TValues,**
+
 UResponse
 
 ## Type Parameters
@@ -20,7 +22,7 @@ UResponse
 
 ## Properties
 
-### add()
+### add
 
 ```ts
 add: (key, value) => this;
@@ -42,7 +44,7 @@ keyof `TValues`
 
 ***
 
-### addIf()
+### addIf
 
 ```ts
 addIf: (key, value) => this;
@@ -64,7 +66,7 @@ keyof `TValues`
 
 ***
 
-### build()
+### build
 
 ```ts
 build: () => UResponse;

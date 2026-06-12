@@ -1,4 +1,4 @@
-# Type Alias: FactoryService()
+# Type Alias: FactoryService
 
 ```ts
 type FactoryService = (container) => Record<PropertyKey, any>;
@@ -10,9 +10,9 @@ Represents a FactoryService type.
 
 ### container
 
-The dependency injection container.
+`IContainer` \| `any`
 
-`IContainer` | `any`
+The dependency injection container.
 
 ## Returns
 

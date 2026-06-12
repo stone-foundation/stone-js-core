@@ -1,4 +1,4 @@
-# Type Alias: FunctionalAdapterErrorHandler()\<RawEventType, RawResponseType, ExecutionContextType\>
+# Type Alias: FunctionalAdapterErrorHandler\<RawEventType, RawResponseType, ExecutionContextType\>
 
 ```ts
 type FunctionalAdapterErrorHandler<RawEventType, RawResponseType, ExecutionContextType> = (error, context) => Promiseable<IAdapterEventBuilder<RawResponseOptions, IRawResponseWrapper<RawResponseType>>>;

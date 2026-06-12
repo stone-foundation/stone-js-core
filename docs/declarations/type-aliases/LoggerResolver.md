@@ -1,4 +1,4 @@
-# Type Alias: LoggerResolver()
+# Type Alias: LoggerResolver
 
 ```ts
 type LoggerResolver = (blueprint) => ILogger;

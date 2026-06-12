@@ -1,7 +1,7 @@
 # Function: isEmpty()
 
 ```ts
-function isEmpty(value): value is undefined | null | false | "" | 0;
+function isEmpty(value): value is false | "" | 0 | null | undefined;
 ```
 
 Check if the provided value is empty.
@@ -16,6 +16,6 @@ The value to check.
 
 ## Returns
 
-value is undefined \| null \| false \| "" \| 0
+value is false \| "" \| 0 \| null \| undefined
 
 `true` if the value is empty, otherwise `false`.

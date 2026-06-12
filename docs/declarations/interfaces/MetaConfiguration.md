@@ -15,7 +15,7 @@ Represents a metadata object for a configuration.
 ### isClass?
 
 ```ts
-optional isClass: boolean;
+optional isClass?: boolean;
 ```
 
 ***

@@ -1,4 +1,4 @@
-# Type Alias: FactoryLogger()
+# Type Alias: FactoryLogger
 
 ```ts
 type FactoryLogger = (container) => ILogger;
@@ -10,9 +10,9 @@ Represents a FactoryLogger type.
 
 ### container
 
-The dependency injection container.
+`IContainer` \| `any`
 
-`IContainer` | `any`
+The dependency injection container.
 
 ## Returns
 

@@ -1,4 +1,4 @@
-# Type Alias: ConfigurationClass()\<TValues\>
+# Type Alias: ConfigurationClass\<TValues\>
 
 ```ts
 type ConfigurationClass<TValues> = (...args) => IConfiguration<TValues>;

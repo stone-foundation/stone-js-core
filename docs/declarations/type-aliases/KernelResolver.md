@@ -1,4 +1,4 @@
-# Type Alias: KernelResolver()\<TEvent, UResponse\>
+# Type Alias: KernelResolver\<TEvent, UResponse\>
 
 ```ts
 type KernelResolver<TEvent, UResponse> = (blueprint) => ILifecycleAdapterEventHandler<TEvent, UResponse>;

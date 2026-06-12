@@ -30,7 +30,7 @@ The value of the custom properties can be of any type, depending on user require
 ### adapter?
 
 ```ts
-optional adapter: Partial<AdapterConfig<any, any, any, U, any, V>>;
+optional adapter?: Partial<AdapterConfig<any, any, any, U, any, V>>;
 ```
 
 Current Adapter configurations for the application.
@@ -115,7 +115,7 @@ Kernel configurations for the application.
 ### lifecycleHooks?
 
 ```ts
-optional lifecycleHooks: LifecycleHookType<IBlueprint, any, any, U, V>;
+optional lifecycleHooks?: LifecycleHookType<IBlueprint, any, any, U, V>;
 ```
 
 Lifecycle hooks for the application.
@@ -137,7 +137,7 @@ This allows you to specify functions to listen for specific events.
 ### liveConfigurations?
 
 ```ts
-optional liveConfigurations: MixedConfiguration[];
+optional liveConfigurations?: MixedConfiguration[];
 ```
 
 Live configurations are loaded at each request.
@@ -169,7 +169,7 @@ Logging settings, including the logger instance and error reporting configuratio
 ### middleware?
 
 ```ts
-optional middleware: MixedPipe<U, V>[];
+optional middleware?: MixedPipe<U, V>[];
 ```
 
 Middleware configuration options for specific stages of the application lifecycle.
@@ -199,7 +199,7 @@ Service providers to be automatically loaded for each request to the application
 ### secret?
 
 ```ts
-optional secret: string;
+optional secret?: string;
 ```
 
 A secret key used for encryption purposes throughout the application.

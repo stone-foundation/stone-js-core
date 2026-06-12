@@ -1,4 +1,4 @@
-# Type Alias: FunctionalErrorHandler()\<TEvent, UResponse\>
+# Type Alias: FunctionalErrorHandler\<TEvent, UResponse\>
 
 ```ts
 type FunctionalErrorHandler<TEvent, UResponse> = (error, event) => Promiseable<UResponse>;

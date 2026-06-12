@@ -7,5 +7,5 @@ Stone factory options.
 ### modules?
 
 ```ts
-optional modules: unknown[];
+optional modules?: unknown[];
 ```

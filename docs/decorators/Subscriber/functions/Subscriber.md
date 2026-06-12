@@ -1,7 +1,7 @@
 # Function: Subscriber()
 
 ```ts
-function Subscriber<T>(options): ClassDecorator;
+function Subscriber<T>(options?): ClassDecorator;
 ```
 
 Subscriber decorator to mark a class as a subscriber.
@@ -17,7 +17,7 @@ allowing them to listen for events or perform specific tasks based on their subs
 
 ## Parameters
 
-### options
+### options?
 
 [`SubscriberOptions`](../interfaces/SubscriberOptions.md) = `{}`
 

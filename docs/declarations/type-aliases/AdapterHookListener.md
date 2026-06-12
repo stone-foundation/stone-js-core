@@ -1,4 +1,4 @@
-# Type Alias: AdapterHookListener()\<AdapterContextType\>
+# Type Alias: AdapterHookListener\<AdapterContextType\>
 
 ```ts
 type AdapterHookListener<AdapterContextType> = (context) => Promiseable<void>;

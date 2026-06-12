@@ -7,7 +7,7 @@ Represents options for configuring an error.
 ### cause?
 
 ```ts
-optional cause: Error;
+optional cause?: Error;
 ```
 
 The original error that caused this error, useful for error chaining.
@@ -17,7 +17,7 @@ The original error that caused this error, useful for error chaining.
 ### code?
 
 ```ts
-optional code: string;
+optional code?: string;
 ```
 
 A specific error code for identifying the error.
@@ -27,7 +27,7 @@ A specific error code for identifying the error.
 ### metadata?
 
 ```ts
-optional metadata: unknown;
+optional metadata?: unknown;
 ```
 
 Additional information or context about the error.

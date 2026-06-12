@@ -1,4 +1,4 @@
-# Type Alias: ILoggerClass()
+# Type Alias: ILoggerClass
 
 ```ts
 type ILoggerClass = (...args) => ILogger;

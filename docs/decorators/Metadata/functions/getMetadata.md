@@ -4,20 +4,26 @@ Get the metadata value for a given key from a class.
 
 ## Param
 
+**Class**
+
 The class to get the metadata from.
 
 ## Param
 
+**key**
+
 The key of the metadata to retrieve.
 
 ## Param
+
+**fallback**
 
 The default value to return if the metadata key is not found.
 
 ## Call Signature
 
 ```ts
-function getMetadata<TClass, UReturn>(Class, key): undefined | UReturn;
+function getMetadata<TClass, UReturn>(Class, key): UReturn | undefined;
 ```
 
 Get the metadata value for a given key from a class.
@@ -48,7 +54,7 @@ The key of the metadata to retrieve.
 
 ### Returns
 
-`undefined` \| `UReturn`
+`UReturn` \| `undefined`
 
 The metadata value or the default value if the key does not exist.
 

@@ -19,7 +19,7 @@ Represents lifecycle hooks that can be defined for the adapter, such as initiali
 ### onAdapterMiddlewareProcessed?
 
 ```ts
-optional onAdapterMiddlewareProcessed: PipelineHookListener<AdapterContextType, IAdapterEventBuilder<RawResponseOptions, IRawResponseWrapper<RawResponseType>>, any[]>;
+optional onAdapterMiddlewareProcessed?: PipelineHookListener<AdapterContextType, IAdapterEventBuilder<RawResponseOptions, IRawResponseWrapper<RawResponseType>>, any[]>;
 ```
 
 ***
@@ -27,7 +27,7 @@ optional onAdapterMiddlewareProcessed: PipelineHookListener<AdapterContextType, 
 ### onBuildingIncomingEvent?
 
 ```ts
-optional onBuildingIncomingEvent: AdapterHookListener<AdapterContextType>;
+optional onBuildingIncomingEvent?: AdapterHookListener<AdapterContextType>;
 ```
 
 ***
@@ -35,7 +35,7 @@ optional onBuildingIncomingEvent: AdapterHookListener<AdapterContextType>;
 ### onBuildingRawResponse?
 
 ```ts
-optional onBuildingRawResponse: AdapterHookListener<AdapterContextType>;
+optional onBuildingRawResponse?: AdapterHookListener<AdapterContextType>;
 ```
 
 ***
@@ -43,7 +43,7 @@ optional onBuildingRawResponse: AdapterHookListener<AdapterContextType>;
 ### onHandlingAdapterError?
 
 ```ts
-optional onHandlingAdapterError: AdapterHookListener<AdapterContextType>;
+optional onHandlingAdapterError?: AdapterHookListener<AdapterContextType>;
 ```
 
 ***
@@ -51,7 +51,7 @@ optional onHandlingAdapterError: AdapterHookListener<AdapterContextType>;
 ### onProcessingAdapterMiddleware?
 
 ```ts
-optional onProcessingAdapterMiddleware: PipelineHookListener<AdapterContextType, IAdapterEventBuilder<RawResponseOptions, IRawResponseWrapper<RawResponseType>>, any[]>;
+optional onProcessingAdapterMiddleware?: PipelineHookListener<AdapterContextType, IAdapterEventBuilder<RawResponseOptions, IRawResponseWrapper<RawResponseType>>, any[]>;
 ```
 
 ***
@@ -59,7 +59,7 @@ optional onProcessingAdapterMiddleware: PipelineHookListener<AdapterContextType,
 ### onStart?
 
 ```ts
-optional onStart: AdapterHookListener<AdapterContextType>;
+optional onStart?: AdapterHookListener<AdapterContextType>;
 ```
 
 ***
@@ -67,5 +67,5 @@ optional onStart: AdapterHookListener<AdapterContextType>;
 ### onStop?
 
 ```ts
-optional onStop: AdapterHookListener<AdapterContextType>;
+optional onStop?: AdapterHookListener<AdapterContextType>;
 ```

@@ -4,16 +4,20 @@ Get all metadata from a class.
 
 ## Param
 
+**Class**
+
 The class to get all metadata from.
 
 ## Param
+
+**fallback**
 
 The default value to return if no metadata is found.
 
 ## Call Signature
 
 ```ts
-function getAllMetadata<TClass, UReturn>(Class): undefined | UReturn;
+function getAllMetadata<TClass, UReturn>(Class): UReturn | undefined;
 ```
 
 Get all metadata from a class.
@@ -38,7 +42,7 @@ The class to get all metadata from.
 
 ### Returns
 
-`undefined` \| `UReturn`
+`UReturn` \| `undefined`
 
 All metadata or the default value if no metadata exists.
 

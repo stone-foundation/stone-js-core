@@ -1,4 +1,4 @@
-# Type Alias: IServiceProviderClass()
+# Type Alias: IServiceProviderClass
 
 ```ts
 type IServiceProviderClass = (...args) => IServiceProvider;

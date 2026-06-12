@@ -1,4 +1,4 @@
-# Type Alias: FactoryServiceProvider()
+# Type Alias: FactoryServiceProvider
 
 ```ts
 type FactoryServiceProvider = (container) => IServiceProvider;
@@ -10,9 +10,9 @@ Represents a FactoryServiceProvider type.
 
 ### container
 
-The dependency injection container.
+`IContainer` \| `any`
 
-`IContainer` | `any`
+The dependency injection container.
 
 ## Returns
 

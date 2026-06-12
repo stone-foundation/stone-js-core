@@ -7,9 +7,13 @@ if the adapter context matches either the platform or alias (or both are undefin
 
 ## Param
 
+**module**
+
 The middleware module to register (function, factory, or class).
 
 ## Param
+
+**options**
 
 Metadata describing which adapter(s) the middleware applies to.
 

@@ -1,4 +1,4 @@
-# Type Alias: IAdapterErrorHandlerClass()\<RawEventType, RawResponseType, ExecutionContextType\>
+# Type Alias: IAdapterErrorHandlerClass\<RawEventType, RawResponseType, ExecutionContextType\>
 
 ```ts
 type IAdapterErrorHandlerClass<RawEventType, RawResponseType, ExecutionContextType> = (...args) => IAdapterErrorHandler<RawEventType, RawResponseType, ExecutionContextType>;

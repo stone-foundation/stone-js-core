@@ -1,4 +1,4 @@
-# Type Alias: IEventSubscriberClass()
+# Type Alias: IEventSubscriberClass
 
 ```ts
 type IEventSubscriberClass = (...args) => IEventSubscriber;

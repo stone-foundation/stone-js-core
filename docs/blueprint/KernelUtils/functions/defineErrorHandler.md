@@ -7,9 +7,13 @@ and adds it to the `stone.kernel.errorHandlers` blueprint section.
 
 ## Param
 
+**module**
+
 The error handler module (function, factory, or class).
 
 ## Param
+
+**options**
 
 Metadata defining the error types it handles, and type flags.
 

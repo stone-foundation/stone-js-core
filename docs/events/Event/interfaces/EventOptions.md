@@ -22,7 +22,7 @@ EventOptions.
 ### metadata?
 
 ```ts
-optional metadata: Record<string, unknown>;
+optional metadata?: Record<string, unknown>;
 ```
 
 ***
@@ -30,7 +30,7 @@ optional metadata: Record<string, unknown>;
 ### source?
 
 ```ts
-optional source: object;
+optional source?: object;
 ```
 
 ***
@@ -38,7 +38,7 @@ optional source: object;
 ### timeStamp?
 
 ```ts
-optional timeStamp: number;
+optional timeStamp?: number;
 ```
 
 ***
@@ -46,5 +46,5 @@ optional timeStamp: number;
 ### type?
 
 ```ts
-optional type: string;
+optional type?: string;
 ```

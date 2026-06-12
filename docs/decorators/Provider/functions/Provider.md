@@ -1,7 +1,7 @@
 # Function: Provider()
 
 ```ts
-function Provider<T>(options): ClassDecorator;
+function Provider<T>(options?): ClassDecorator;
 ```
 
 Provider decorator to mark a class as a ServiceProvider and automatically bind its services to the container.
@@ -17,7 +17,7 @@ allowing them to manage and provide their services to the service container.
 
 ## Parameters
 
-### options
+### options?
 
 [`ProviderOptions`](../interfaces/ProviderOptions.md) = `{}`
 

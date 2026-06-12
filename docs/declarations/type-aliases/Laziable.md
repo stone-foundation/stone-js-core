@@ -1,4 +1,4 @@
-# Type Alias: Laziable()\<T\>
+# Type Alias: Laziable\<T\>
 
 ```ts
 type Laziable<T> = () => Promise<T>;

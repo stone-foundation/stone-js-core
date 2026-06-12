@@ -394,4 +394,175 @@ describe('Kernel', () => {
       expect(onTerminate).toHaveBeenCalledOnce()
     })
   })
+
+  it('should bind originalEvent when event has clone method', async () => {
+    const handler = vi.fn().mockResolvedValue(TestResponse.create({}))
+
+    const event = TestEvent.create()
+    const clonedEvent = TestEvent.create()
+
+    event.clone = () => clonedEvent as any
+
+    const config = Config.create()
+    config.set('stone.kernel.eventHandler', handler)
+
+    const kernel = createKernel(config)
+
+    await kernel.onInit()
+    await kernel.handle(event)
+
+    // eslint-disable-next-line
+    expect(kernel['container'].resolve('originalEvent')).toBe(clonedEvent)
+  })
+
+  it('should resolve factory middleware', async () => {
+    const middlewareSpy = vi.fn()
+
+    const factoryMiddleware = () => ({
+      handle: async (event: TestEvent, next: NextMiddleware) => {
+        middlewareSpy()
+        return await next(event)
+      }
+    })
+
+    const config = Config.create()
+
+    config.set('stone.kernel.middleware', [
+      { module: factoryMiddleware, isFactory: true }
+    ])
+
+    config.set(
+      'stone.kernel.eventHandler',
+      vi.fn().mockResolvedValue(TestResponse.create({}))
+    )
+
+    const kernel = createKernel(config)
+
+    await kernel.onInit()
+    await kernel.handle(TestEvent.create())
+
+    expect(middlewareSpy).toHaveBeenCalled()
+  })
+
+  it('should cache resolved event handler', async () => {
+    const handler = vi.fn().mockResolvedValue(TestResponse.create({}))
+
+    const config = Config.create()
+    config.set('stone.kernel.eventHandler', handler)
+
+    const kernel = createKernel(config)
+
+    await kernel.onInit()
+
+    // eslint-disable-next-line
+    const first = kernel['resolveEventHandler']()
+
+    // eslint-disable-next-line
+    const second = kernel['resolveEventHandler']()
+
+    expect(first).toBe(second)
+  })
+
+  it('should cache resolved error handler', async () => {
+    const errorHandler = vi.fn()
+
+    const config = Config.create()
+
+    config.set('stone.kernel.errorHandlers.default', {
+      module: errorHandler
+    })
+
+    const kernel = createKernel(config)
+
+    const error = new Error('boom')
+
+    // eslint-disable-next-line
+    const first = kernel['resolveErrorHandler'](error)
+
+    // eslint-disable-next-line
+    const second = kernel['resolveErrorHandler'](error)
+
+    expect(first).toBe(second)
+  })
+
+  it('should resolve constructor provider branch', async () => {
+    const register = vi.fn()
+
+    class Provider implements IServiceProvider {
+      register = register
+    }
+
+    const config = Config.create()
+
+    config.set('stone.providers', [Provider])
+
+    const kernel = createKernel(config)
+
+    await kernel.onInit()
+
+    expect(register).toHaveBeenCalledOnce()
+  })
+
+  it('should execute functional live configuration branch', async () => {
+    const fn = vi.fn()
+
+    const config = Config.create()
+
+    config.set('stone.liveConfigurations', [
+      async (blueprint: IBlueprint) => {
+        fn()
+        blueprint.set('stone.live.executed', true)
+      }
+    ])
+
+    const kernel = createKernel(config)
+
+    await kernel.onInit()
+
+    expect(fn).toHaveBeenCalledOnce()
+    expect(config.get('stone.live.executed')).toBe(true)
+  })
+
+  it('should execute response lifecycle hooks', async () => {
+    const onPreparingResponse = vi.fn()
+    const onResponsePrepared = vi.fn()
+
+    const config = Config.create()
+
+    config.set(
+      'stone.kernel.eventHandler',
+      vi.fn().mockResolvedValue(TestResponse.create({}))
+    )
+
+    config.set('stone.lifecycleHooks.onPreparingResponse', [onPreparingResponse])
+    config.set('stone.lifecycleHooks.onResponsePrepared', [onResponsePrepared])
+
+    const kernel = createKernel(config)
+
+    await kernel.onInit()
+    await kernel.handle(TestEvent.create())
+
+    expect(onPreparingResponse).toHaveBeenCalled()
+    expect(onResponsePrepared).toHaveBeenCalled()
+  })
+
+  it('should execute onExecutingEventHandler hook', async () => {
+    const hook = vi.fn()
+
+    const config = Config.create()
+
+    config.set(
+      'stone.kernel.eventHandler',
+      vi.fn().mockResolvedValue(TestResponse.create({}))
+    )
+
+    config.set('stone.lifecycleHooks.onExecutingEventHandler', [hook])
+
+    const kernel = createKernel(config)
+
+    await kernel.onInit()
+    await kernel.handle(TestEvent.create())
+
+    expect(hook).toHaveBeenCalled()
+  })
 })

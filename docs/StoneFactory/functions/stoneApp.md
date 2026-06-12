@@ -1,7 +1,7 @@
 # Function: stoneApp()
 
 ```ts
-function stoneApp<U, V>(options): StoneFactory<U, V>;
+function stoneApp<U, V>(options?): StoneFactory<U, V>;
 ```
 
 Create a new Stone instance with the given options.
@@ -21,7 +21,7 @@ It allows you to configure the application using the StoneFactory.
 
 ## Parameters
 
-### options
+### options?
 
 [`StoneFactoryOptions`](../interfaces/StoneFactoryOptions.md) = `{}`
 
