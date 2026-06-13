@@ -5,6 +5,13 @@ All notable changes to the "Stone.js Core" extension will be documented in this 
 ## Unreleased
 
 
+## [0.2.1](https://github.com/stone-foundation/stone-js-core/compare/v0.2.0...v0.2.1) (2026-06-13)
+
+
+### Bug Fixes
+
+* updated Container dependencies to fix bugs ([#41](https://github.com/stone-foundation/stone-js-core/issues/41)) ([59a6e39](https://github.com/stone-foundation/stone-js-core/commit/59a6e394d7d4b96f8b1b296ebeba890c8813095e))
+
 ## [0.2.0](https://github.com/stone-foundation/stone-js-core/compare/v0.1.4...v0.2.0) (2026-04-05)
 
 
