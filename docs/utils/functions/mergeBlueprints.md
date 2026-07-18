@@ -8,9 +8,10 @@ Merges multiple blueprints into a single application blueprint.
 
 This function takes any number of blueprint objects and merges them into one,
 with later blueprints overwriting properties of earlier ones in case of conflicts.
-It uses deep merging to ensure nested properties are also combined appropriately.
-Note: The `deepmerge` function can lead to unexpected results if objects have circular references.
-Consider handling such cases or documenting this behavior if it applies to your usage.
+Deep-merges via `@stone-js/config`'s `deepMerge`: plain objects merge recursively, arrays
+concatenate, and special objects (Date, Map, Set, class instances) are preserved instead of
+being flattened. Writes are guarded against prototype pollution. A single, shared merge
+implementation across the framework.
 
 ## Type Parameters
 

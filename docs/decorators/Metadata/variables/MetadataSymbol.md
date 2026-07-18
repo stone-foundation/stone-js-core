@@ -1,7 +1,7 @@
 # Variable: MetadataSymbol
 
 ```ts
-const MetadataSymbol: typeof metadataKey;
+const MetadataSymbol: MetadataKey;
 ```
 
 A unique symbol for storing and accessing metadata on classes and their members.

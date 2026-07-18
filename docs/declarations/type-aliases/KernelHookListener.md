@@ -12,7 +12,7 @@ Represents a listener hook that can either be synchronous or asynchronous.
 
 ### container?
 
-`IContainer` \| `any`
+[`IContainer`](../interfaces/IContainer.md) \| `any`
 
 ## Returns
 
