@@ -39,6 +39,7 @@ import {
   FunctionalEventSubscriber
 } from '../declarations'
 import { Event } from '../events/Event'
+import { isClassConstructor } from '../utils'
 import { IncomingEvent } from '../events/IncomingEvent'
 import { StoneBlueprint } from '../options/StoneBlueprint'
 import { OutgoingResponse } from '../events/OutgoingResponse'
@@ -392,11 +393,7 @@ export function defineServiceProvider (
 ): Partial<StoneBlueprint> {
   return {
     stone: {
-      providers: [{
-        module,
-        isClass: options?.isClass,
-        isFactory: options?.isFactory ?? options?.isClass !== true
-      }]
+      providers: [resolveModuleKind(module, options)]
     }
   }
 }
@@ -447,14 +444,29 @@ export function defineService (
 ): Partial<StoneBlueprint> {
   return {
     stone: {
-      services: [{
-        ...options,
-        module,
-        isClass: options?.isClass,
-        isFactory: options?.isFactory ?? options?.isClass !== true
-      }]
+      services: [{ ...options, ...resolveModuleKind(module, options) }]
     }
   }
+}
+
+/**
+ * Resolve the `isClass` / `isFactory` discriminators for a meta module.
+ *
+ * When neither flag is given, the kind is inferred from the module itself: a constructor
+ * becomes a class, anything else a factory. This prevents the boot-time `TypeError` that
+ * occurred when a class was passed without `{ isClass: true }` and later invoked without `new`.
+ *
+ * @param module - The class or factory being registered.
+ * @param options - The caller-provided flags, if any.
+ * @returns The meta module with resolved `isClass`/`isFactory`.
+ */
+function resolveModuleKind<T> (
+  module: T,
+  options?: { isFactory?: boolean, isClass?: boolean }
+): { module: T, isClass: boolean, isFactory: boolean } {
+  const asClass = options?.isClass ?? (options?.isFactory !== true && isClassConstructor(module))
+  const asFactory = options?.isFactory ?? !asClass
+  return { module, isClass: asClass, isFactory: asFactory }
 }
 
 /**

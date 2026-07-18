@@ -1,10 +1,9 @@
-import deepmerge from 'deepmerge'
 import { SetupError } from './errors/SetupError'
 import { IncomingEvent } from './events/IncomingEvent'
-import { isObjectLike, isPlainObject } from 'lodash-es'
 import { StoneBlueprint } from './options/StoneBlueprint'
 import { OutgoingResponse } from './events/OutgoingResponse'
 import { isConstructor, isFunction } from '@stone-js/pipeline'
+import { deepMerge, isObjectLike, isPlainObject } from '@stone-js/config'
 
 /**
  * Export utils functions from the pipeline package.
@@ -16,9 +15,10 @@ export { isConstructor, isFunction, isString } from '@stone-js/pipeline'
  *
  * This function takes any number of blueprint objects and merges them into one,
  * with later blueprints overwriting properties of earlier ones in case of conflicts.
- * It uses deep merging to ensure nested properties are also combined appropriately.
- * Note: The `deepmerge` function can lead to unexpected results if objects have circular references.
- * Consider handling such cases or documenting this behavior if it applies to your usage.
+ * Deep-merges via `@stone-js/config`'s `deepMerge`: plain objects merge recursively, arrays
+ * concatenate, and special objects (Date, Map, Set, class instances) are preserved instead of
+ * being flattened. Writes are guarded against prototype pollution. A single, shared merge
+ * implementation across the framework.
  *
  * @param blueprints - An array of blueprints to be merged.
  * @returns The merged application blueprint.
@@ -35,7 +35,30 @@ export const mergeBlueprints = <
   V extends OutgoingResponse = OutgoingResponse
 >(...blueprints: Array<StoneBlueprint<U, V> | Record<string, any>>): StoneBlueprint<U, V> => {
   validateBlueprints(blueprints)
-  return blueprints.reduce<StoneBlueprint<U, V>>((prev, curr) => deepmerge<StoneBlueprint<U, V>>(prev, curr, { isMergeableObject: isMergeable }), { stone: {} })
+  const initial: StoneBlueprint<U, V> = { stone: {} }
+  return blueprints.reduce<StoneBlueprint<U, V>>((prev, curr) => deepMerge(prev, curr), initial)
+}
+
+/**
+ * Check whether a value is a class constructor, as opposed to an ordinary or factory function.
+ *
+ * Uses two complementary signals so it survives down-level bundling:
+ * 1. Native/modern classes stringify with the `class` keyword.
+ * 2. Classes transpiled to ES5 lose that keyword but still carry their methods on the
+ *    prototype, whereas a plain/factory function's prototype has only `constructor`.
+ *
+ * Ambiguous cases remain (a transpiled class with no methods, or a factory that decorates
+ * its prototype) — for those, callers pass an explicit `{ isClass }` / `{ isFactory }` flag,
+ * which is always authoritative over this heuristic.
+ *
+ * @param value - The value to check.
+ * @returns `true` if the value is (very likely) a class constructor, otherwise `false`.
+ */
+export const isClassConstructor = (value: unknown): boolean => {
+  if (typeof value !== 'function') { return false }
+  if (/^class[\s{]/.test(Function.prototype.toString.call(value))) { return true }
+  const proto = (value as { prototype?: object }).prototype
+  return proto !== null && proto !== undefined && Object.getOwnPropertyNames(proto).length > 1
 }
 
 /**
@@ -165,22 +188,6 @@ export const isNotEmpty = <ValueType = unknown>(value: unknown): value is ValueT
  */
 export const isEmpty = (value: unknown): value is undefined | null | 0 | false | '' => {
   return !isNotEmpty(value)
-}
-
-/**
- * Custom function to determine if an object is mergeable.
- * Helps to avoid issues with circular references.
- *
- * @param value - The value to check for mergeability.
- * @returns Whether the value is mergeable or not.
- *
- * @example
- * ```typescript
- * const canMerge = isMergeable(someValue);
- * ```
- */
-const isMergeable = (value: any): boolean => {
-  return value !== undefined && typeof value === 'object' && !Object.isFrozen(value)
 }
 
 /**

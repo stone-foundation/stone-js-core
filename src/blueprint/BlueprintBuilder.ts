@@ -43,7 +43,7 @@ export class BlueprintBuilder<
   private constructor (private readonly blueprint: BlueprintType) {
     this.hooks = blueprint.get('stone.lifecycleHooks', {})
     this.middleware = blueprint.get('stone.blueprint.middleware', [])
-    this.defaultMiddlewarePriority = blueprint.get('stone.blueprint.defaultMiddlewarePriority', 0)
+    this.defaultMiddlewarePriority = blueprint.get('stone.blueprint.defaultMiddlewarePriority', 10)
   }
 
   /**
@@ -69,11 +69,13 @@ export class BlueprintBuilder<
 
     await this.executeHooks('onPreparingBlueprint', context)
 
+    // `defaultPriority` must be set BEFORE `through`: the pipeline stamps each pipe's
+    // priority at registration time, so calling it afterwards had no effect.
     const blueprint = await Pipeline
       .create(this.makePipelineOptions())
       .send(context)
-      .through(...this.middleware)
       .defaultPriority(this.defaultMiddlewarePriority)
+      .through(...this.middleware)
       .then((v) => v.blueprint)
 
     await this.executeHooks('onBlueprintPrepared', context)

@@ -27,7 +27,10 @@ export default [
     ]
   },
   {
-    input: 'dist/**/*.d.ts',
+    // Exclude the previous build's own output so a stale `dist/index.d.ts` is never
+    // re-consumed (which silently dropped re-exported symbols like `IncomingEvent` on
+    // incremental builds that skipped `rimraf dist`).
+    input: ['dist/**/*.d.ts', '!dist/index.d.ts'],
     output: [{ format: 'es' , file: 'dist/index.d.ts' }],
     plugins: [
       multi(),
