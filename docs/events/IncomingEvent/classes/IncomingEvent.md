@@ -125,20 +125,19 @@ The platform of the event source.
 ### clone()
 
 ```ts
-clone<T>(): T;
+clone(): this;
 ```
 
 Return a cloned instance.
 
-#### Type Parameters
-
-##### T
-
-`T` *extends* `IncomingEvent`
+The `metadata` container is deep-copied (plain objects and arrays are recreated,
+special values kept by reference) so that mutating the clone's metadata — e.g. via
+middleware — never leaks back into the original event. This is what makes the
+Kernel's `originalEvent` snapshot a faithful pre-middleware copy.
 
 #### Returns
 
-`T`
+`this`
 
 A cloned instance of the current class.
 

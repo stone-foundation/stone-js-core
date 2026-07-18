@@ -1,7 +1,14 @@
 # utils
 
+## Variables
+
+- [isConstructor](variables/isConstructor.md)
+- [isFunction](variables/isFunction.md)
+- [isString](variables/isString.md)
+
 ## Functions
 
+- [isClassConstructor](functions/isClassConstructor.md)
 - [isEmpty](functions/isEmpty.md)
 - [isFunctionModule](functions/isFunctionModule.md)
 - [isHandlerHasHook](functions/isHandlerHasHook.md)

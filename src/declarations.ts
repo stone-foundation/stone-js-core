@@ -12,9 +12,19 @@ import { FactoryPipe, FunctionalPipe, MetaPipe, MixedPipe, NextPipe, PipeAlias, 
 export { IContainer }
 
 /**
- * Declare the unique symbol type for metadata keys.
+ * The unique symbol type used as the metadata key on decorated classes.
+ *
+ * `metadataKey` itself is an ambient, module-local declaration (no runtime value):
+ * it exists only to type the computed-key positions below. The public, importable
+ * surface is the `MetadataKey` type alias — there is deliberately no value export
+ * named `metadataKey`, which previously produced a runtime `SyntaxError` on import.
  */
-export declare const metadataKey: unique symbol
+declare const metadataKey: unique symbol
+
+/**
+ * Type of the metadata key symbol. Import this (type-only) instead of the phantom value.
+ */
+export type MetadataKey = typeof metadataKey
 
 /**
  * Represents a BlueprintMiddlewareHookContext type.

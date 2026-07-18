@@ -22,7 +22,7 @@ Represents a factory function that creates an error handler function.
 
 ### container
 
-`IContainer` \| `any`
+[`IContainer`](../interfaces/IContainer.md) \| `any`
 
 The dependency injection container.
 

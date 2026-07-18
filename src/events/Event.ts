@@ -1,4 +1,4 @@
-import { get, set, isPlainObject } from 'lodash-es'
+import { getPath, setPath, isPlainObject, cloneValue } from '@stone-js/config'
 
 /**
  * EventOptions.
@@ -112,7 +112,7 @@ export abstract class Event {
    * @returns The value associated with the key or the fallback.
    */
   getMetadataValue<TReturn = unknown>(key: string, fallback?: TReturn): TReturn | undefined {
-    return get<unknown, string, TReturn | undefined>(this.metadata, key, fallback)
+    return getPath<TReturn>(this.metadata, key, fallback)
   }
 
   /**
@@ -123,16 +123,30 @@ export abstract class Event {
    * @returns This Event instance.
    */
   setMetadataValue (key: string | Record<string, unknown>, value?: unknown): this {
-    Object.entries(isPlainObject(key) ? key : { [key as string]: value }).forEach(([name, val]) => set(this.metadata, name, val))
+    Object.entries(isPlainObject(key) ? key : { [key as string]: value }).forEach(([name, val]) => setPath(this.metadata, name, val))
     return this
   }
 
   /**
    * Return a cloned instance.
    *
+   * The `metadata` container is deep-copied (plain objects and arrays are recreated,
+   * special values kept by reference) so that mutating the clone's metadata — e.g. via
+   * middleware — never leaks back into the original event. This is what makes the
+   * Kernel's `originalEvent` snapshot a faithful pre-middleware copy.
+   *
    * @returns A cloned instance of the current class.
    */
-  clone<T extends this>(): T {
-    return Object.assign(Object.create(Object.getPrototypeOf(this)), this)
+  clone (): this {
+    const cloned = Object.assign(Object.create(Object.getPrototypeOf(this)), this) as this
+    // Reuse the shared, framework-wide deep clone (plain objects/arrays recreated, special
+    // values kept by reference) so clone mutations never leak into the original event.
+    Object.defineProperty(cloned, 'metadata', {
+      value: cloneValue(this.metadata),
+      writable: false,
+      enumerable: true,
+      configurable: true
+    })
+    return cloned
   }
 }

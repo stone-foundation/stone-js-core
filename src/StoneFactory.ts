@@ -104,10 +104,16 @@ export class StoneFactory<TEvent extends IncomingEvent, UResponse extends Outgoi
     // Initialize the blueprint.
     // The first step is to set up the blueprint with the provided modules.
     await this.initBlueprint()
-    // Initialize the logger.
+    // Bootstrap logger: the blueprint builder logs during its run, so it needs a logger
+    // before the build. This honours any logger config already present (plain blueprints,
+    // `@StoneApp`) and falls back to the ConsoleLogger otherwise.
     Logger.init(this.blueprint)
     // Populate the blueprint with modules.
     await BlueprintBuilder.create(this.blueprint).build(this.modules)
+    // Re-initialise the logger against the fully-populated blueprint so a user-defined
+    // resolver contributed during the build (e.g. via `@Configuration`) takes effect and
+    // is not shadowed by the default logger.
+    Logger.init(this.blueprint)
     // Run the application using the resolved adapter.
     return await this.resolveAdapter().run<ExecutionResultType>()
   }
@@ -150,11 +156,18 @@ export class StoneFactory<TEvent extends IncomingEvent, UResponse extends Outgoi
    * @param module - The module to register lifecycle hooks for.
    */
   private registerLifecycleHooks (module: ClassType): void {
+    // Bind hooks to a real (lazily-created) instance, not the prototype, so class-field
+    // initializers run and `this` resolves to an instance rather than `undefined`.
+    let instance: Record<string, (...args: any[]) => unknown> | undefined
+    const getInstance = (): Record<string, (...args: any[]) => unknown> => {
+      return (instance ??= new (module as unknown as new () => Record<string, (...args: any[]) => unknown>)())
+    }
+
     getMetadata<ClassType, HookOptions[]>(module, LIFECYCLE_HOOK_KEY, []).forEach(options => {
       if (isNotEmpty<HookOptions>(options)) {
         this.blueprint.add(
           `stone.lifecycleHooks.${options.name}`,
-          [module.prototype[options.method].bind(module.prototype)]
+          [(...args: any[]) => getInstance()[options.method](...args)]
         )
       }
     })

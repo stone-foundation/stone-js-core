@@ -22,7 +22,7 @@ Represents a factory function that creates an event handler function.
 
 ### container
 
-`IContainer` \| `any`
+[`IContainer`](../interfaces/IContainer.md) \| `any`
 
 The dependency injection container.
 

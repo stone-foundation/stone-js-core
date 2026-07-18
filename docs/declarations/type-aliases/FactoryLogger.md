@@ -10,7 +10,7 @@ Represents a FactoryLogger type.
 
 ### container
 
-`IContainer` \| `any`
+[`IContainer`](../interfaces/IContainer.md) \| `any`
 
 The dependency injection container.
 

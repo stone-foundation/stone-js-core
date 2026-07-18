@@ -11,6 +11,7 @@ import {
   validateBlueprints,
   isObjectLikeModule,
   isMetaFactoryModule,
+  isClassConstructor,
   isMetaFunctionModule
 } from '../src/utils'
 import { SetupError } from '../src/errors/SetupError'
@@ -119,6 +120,26 @@ describe('utils', () => {
       expect(isMetaAliasModule({ module: alias, isAlias: true })).toBe(true)
       expect(isMetaAliasModule({ module: alias, isAlias: false })).toBe(false)
       expect(isMetaAliasModule({ module: 'bad', isAlias: true })).toBe(false)
+    })
+  })
+
+  describe('isClassConstructor', () => {
+    it('detects a real class via the `class` keyword', () => {
+      class Foo {}
+      expect(isClassConstructor(Foo)).toBe(true)
+    })
+
+    it('detects a class-like function by its prototype methods', () => {
+      function Bar (this: any): void {}
+      Bar.prototype.method = function (): void {}
+      expect(isClassConstructor(Bar)).toBe(true)
+    })
+
+    it('rejects plain/factory functions and non-functions', () => {
+      expect(isClassConstructor(() => ({}))).toBe(false)
+      expect(isClassConstructor(function factory () { return {} })).toBe(false)
+      expect(isClassConstructor(42)).toBe(false)
+      expect(isClassConstructor(null)).toBe(false)
     })
   })
 

@@ -4,16 +4,16 @@ import { IncomingEvent } from '../events/IncomingEvent'
 import { StoneBlueprint } from '../options/StoneBlueprint'
 import { OutgoingResponse } from '../events/OutgoingResponse'
 import { isFunctionModule, isNotEmpty, isObjectLikeModule, mergeBlueprints } from '../utils'
-import { ClassType, MetadataHolder, ProposalClassDecorator, ProposalMethodDecorator, ProposalPropertyDecorator, metadataKey } from '../declarations'
+import { ClassType, MetadataHolder, ProposalClassDecorator, ProposalMethodDecorator, ProposalPropertyDecorator, MetadataKey } from '../declarations'
 
 /**
  * A unique symbol for storing and accessing metadata on classes and their members.
  * This symbol is used by decorators to define and retrieve metadata across modules.
  */
-export const MetadataSymbol: typeof metadataKey = (Symbol.metadata !== undefined
+export const MetadataSymbol: MetadataKey = (Symbol.metadata !== undefined
   ? Symbol.metadata
   : Symbol.for('Symbol.metadata')
-) as typeof metadataKey
+) as MetadataKey
 
 /**
  * Set metadata on a given decorator context.
@@ -76,7 +76,9 @@ export function getMetadata<TClass extends ClassType, UReturn = unknown> (Class:
  * @returns The metadata value or the default value if the key does not exist.
  */
 export function getMetadata<TClass extends ClassType, UReturn = unknown> (Class: TClass, key: PropertyKey, fallback?: UReturn): UReturn | undefined {
-  return (hasMetadataSymbol(Class) ? Class[MetadataSymbol]?.[key] : fallback) as UReturn | undefined
+  const value = hasMetadataSymbol(Class) ? Class[MetadataSymbol]?.[key] : undefined
+  // Fall back whenever the key is absent — even if the class carries other metadata.
+  return (value ?? fallback) as UReturn | undefined
 }
 
 /**
@@ -114,8 +116,17 @@ export function getAllMetadata<TClass extends ClassType, UReturn = unknown> (Cla
  * @param key - The key of the metadata to remove.
  */
 export function removeMetadata<T extends ClassType> (Class: T, key: PropertyKey): void {
-  if (hasMetadataSymbol(Class) && Class[MetadataSymbol]?.[key] !== undefined) {
-    Class[MetadataSymbol][key] = undefined
+  if (!hasMetadataSymbol(Class)) { return }
+
+  // Only mutate metadata the class OWNS. An undecorated subclass reaches its parent's
+  // metadata object through the prototype chain; mutating it there would corrupt the
+  // parent (and every sibling). In that case there is nothing of this class's own to remove.
+  if (!Object.prototype.hasOwnProperty.call(Class, MetadataSymbol)) { return }
+
+  const metadata = Class[MetadataSymbol]
+  if (metadata?.[key] !== undefined) {
+    /* eslint-disable-next-line @typescript-eslint/no-dynamic-delete */
+    delete metadata[key]
   }
 }
 
@@ -209,7 +220,9 @@ export function getBlueprint<TClass extends ClassType, UReturn = StoneBlueprint>
  * @returns The blueprint value or the default value if the key does not exist.
  */
 export function getBlueprint<TClass extends ClassType, UReturn = StoneBlueprint> (Class: TClass, fallback?: UReturn): UReturn | undefined {
-  return (hasMetadataSymbol(Class) ? Class[MetadataSymbol]?.[BLUEPRINT_KEY] : fallback) as UReturn | undefined
+  const value = hasMetadataSymbol(Class) ? Class[MetadataSymbol]?.[BLUEPRINT_KEY] : undefined
+  // Fall back whenever the blueprint key is absent — even if the class carries other metadata.
+  return (value ?? fallback) as UReturn | undefined
 }
 
 /**

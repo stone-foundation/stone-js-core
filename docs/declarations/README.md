@@ -26,6 +26,7 @@
 - [IBlueprintBuilder](interfaces/IBlueprintBuilder.md)
 - [IBlueprintHook](interfaces/IBlueprintHook.md)
 - [IConfiguration](interfaces/IConfiguration.md)
+- [IContainer](interfaces/IContainer.md)
 - [IErrorHandler](interfaces/IErrorHandler.md)
 - [IEventHandler](interfaces/IEventHandler.md)
 - [IEventListener](interfaces/IEventListener.md)
@@ -110,6 +111,7 @@
 - [ListenerHandler](type-aliases/ListenerHandler.md)
 - [LoggerResolver](type-aliases/LoggerResolver.md)
 - [LoggerType](type-aliases/LoggerType.md)
+- [MetadataKey](type-aliases/MetadataKey.md)
 - [MetaMiddleware](type-aliases/MetaMiddleware.md)
 - [MiddlewareAlias](type-aliases/MiddlewareAlias.md)
 - [MiddlewareClass](type-aliases/MiddlewareClass.md)
@@ -133,7 +135,3 @@
 - [ServiceType](type-aliases/ServiceType.md)
 - [WildcardEventName](type-aliases/WildcardEventName.md)
 - [WildcardListenerHandler](type-aliases/WildcardListenerHandler.md)
-
-## Variables
-
-- [metadataKey](variables/metadataKey.md)

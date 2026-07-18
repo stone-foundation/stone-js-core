@@ -265,6 +265,7 @@ describe('defineServiceProvider', () => {
       stone: {
         providers: [{
           module: factory,
+          isClass: false,
           isFactory: true
         }]
       }
@@ -298,7 +299,31 @@ describe('defineServiceProvider', () => {
       stone: {
         providers: [{
           module: fn,
+          isClass: false,
           isFactory: true
+        }]
+      }
+    })
+  })
+
+  it('should auto-detect a class as isClass:true when no flag is provided', () => {
+    class MyProvider implements IServiceProvider {
+      register (): void {}
+      async boot (): Promise<void> {}
+    }
+
+    // Cast: the current overloads don't yet accept a bare class without options
+    // (typing debt tracked in FEUILLE-DE-ROUTE.md); this test pins the runtime behavior.
+    const blueprint = defineServiceProvider(MyProvider as any)
+
+    // A constructor passed without flags must be treated as a class, not a factory,
+    // otherwise the Kernel would call it without `new` (boot-time TypeError).
+    expect(blueprint).toEqual<Partial<StoneBlueprint>>({
+      stone: {
+        providers: [{
+          module: MyProvider,
+          isClass: true,
+          isFactory: false
         }]
       }
     })
@@ -320,6 +345,7 @@ describe('defineService', () => {
         services: [{
           alias,
           module: factory,
+          isClass: false,
           isFactory: true
         }]
       }
@@ -357,6 +383,7 @@ describe('defineService', () => {
         services: [{
           alias: 'AutoFactory',
           module: factory,
+          isClass: false,
           isFactory: true
         }]
       }
@@ -374,6 +401,7 @@ describe('defineStone', () => {
         services: [{
           alias: 'core.service',
           module: factory,
+          isClass: false,
           isFactory: true
         }]
       }
@@ -405,6 +433,7 @@ describe('defineStone', () => {
         services: [{
           alias: 'auto.factory',
           module: factory,
+          isClass: false,
           isFactory: true
         }]
       }
