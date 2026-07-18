@@ -137,8 +137,8 @@ export abstract class Event {
    *
    * @returns A cloned instance of the current class.
    */
-  clone<T extends this>(): T {
-    const cloned = Object.assign(Object.create(Object.getPrototypeOf(this)), this) as T
+  clone (): this {
+    const cloned = Object.assign(Object.create(Object.getPrototypeOf(this)), this) as this
     // Reuse the shared, framework-wide deep clone (plain objects/arrays recreated, special
     // values kept by reference) so clone mutations never leak into the original event.
     Object.defineProperty(cloned, 'metadata', {
