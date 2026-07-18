@@ -108,6 +108,27 @@ describe('StoneFactory', () => {
       expect(BlueprintBuilder.create).toHaveBeenCalledWith(factory.blueprint)
       expect(result).toBe('mock-response')
     })
+
+    it('should re-initialise the logger AFTER the blueprint build so a user resolver wins', async () => {
+      const adapterMock = { run: vi.fn().mockResolvedValue('mock-response') }
+      const initSpy: any = Logger.init
+      const buildSpy: any = (BlueprintBuilder.create as any)().build
+      initSpy.mockClear()
+      buildSpy.mockClear()
+
+      const factory = StoneFactory.create()
+      // @ts-expect-error access private
+      factory.blueprint.set('stone.adapter.resolver', () => adapterMock)
+
+      await factory.run()
+
+      // Bootstrap init (before build) + final init (after build): the default logger can no
+      // longer shadow a resolver contributed during the build.
+      expect(initSpy).toHaveBeenCalledTimes(2)
+      const finalInitOrder = initSpy.mock.invocationCallOrder[1]
+      const buildOrder = buildSpy.mock.invocationCallOrder[0]
+      expect(finalInitOrder).toBeGreaterThan(buildOrder)
+    })
   })
 
   describe('resolveAdapter()', () => {
@@ -191,9 +212,13 @@ describe('StoneFactory', () => {
       await factory.initBlueprint()
 
       // @ts-expect-error access private
-      const hooks = factory.blueprint.get('stone.lifecycleHooks.onInit', [])
+      const hooks = factory.blueprint.get<Array<(...a: any[]) => unknown>>('stone.lifecycleHooks.onInit', [])
       expect(hooks.length).toBe(1)
       expect(typeof hooks[0]).toBe('function')
+
+      // Invoke it: the hook binds to a lazily-created instance (not the prototype).
+      hooks[0]()
+      expect(methodSpy).toHaveBeenCalled()
     })
 
     it('should register blueprint middleware via @ConfigMiddleware', async () => {

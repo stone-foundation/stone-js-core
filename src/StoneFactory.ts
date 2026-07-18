@@ -104,10 +104,16 @@ export class StoneFactory<TEvent extends IncomingEvent, UResponse extends Outgoi
     // Initialize the blueprint.
     // The first step is to set up the blueprint with the provided modules.
     await this.initBlueprint()
-    // Initialize the logger.
+    // Bootstrap logger: the blueprint builder logs during its run, so it needs a logger
+    // before the build. This honours any logger config already present (plain blueprints,
+    // `@StoneApp`) and falls back to the ConsoleLogger otherwise.
     Logger.init(this.blueprint)
     // Populate the blueprint with modules.
     await BlueprintBuilder.create(this.blueprint).build(this.modules)
+    // Re-initialise the logger against the fully-populated blueprint so a user-defined
+    // resolver contributed during the build (e.g. via `@Configuration`) takes effect and
+    // is not shadowed by the default logger.
+    Logger.init(this.blueprint)
     // Run the application using the resolved adapter.
     return await this.resolveAdapter().run<ExecutionResultType>()
   }
