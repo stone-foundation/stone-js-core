@@ -311,6 +311,29 @@ describe('Kernel', () => {
       expect(response.content).toBe('error')
     })
 
+    it('resolves by error.name when it differs from the constructor name', async () => {
+      const handler = (): void => {
+        const error = new Error('Boom')
+        error.name = 'CustomNamedError' // differs from constructor.name ('Error')
+        throw error
+      }
+
+      const errorHandler = vi.fn().mockResolvedValue('named')
+
+      const config = Config.create()
+      config.set('stone.kernel.eventHandler', handler)
+      config.set('stone.kernel.errorHandlers.CustomNamedError', { module: errorHandler })
+      config.set('stone.kernel.responseResolver', async (content: any) => TestResponse.create(content))
+
+      const kernel = createKernel(config)
+      await kernel.onInit()
+
+      const response = await kernel.handle(TestEvent.create())
+
+      expect(errorHandler).toHaveBeenCalled()
+      expect(response.content).toBe('named')
+    })
+
     it('should handle errors via default factory error handler', async () => {
       const handler = (): void => {
         throw new Error('Boom')

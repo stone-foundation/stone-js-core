@@ -85,6 +85,10 @@ describe('Metadata Utilities', () => {
     expect(MockClass[MetadataSymbol]?.[metadataKey]).toBeUndefined()
   })
 
+  it('is a no-op when the class has no own metadata symbol', () => {
+    expect(() => removeMetadata(class {}, metadataKey)).not.toThrow()
+  })
+
   it('should set class metadata using setClassMetadata', () => {
     const context = { kind: 'class', metadata: {} } as any
     // @ts-expect-error - Testing legacy decorator as 2023-11 proposal decorator
