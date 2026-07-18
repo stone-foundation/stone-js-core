@@ -39,6 +39,23 @@ export const mergeBlueprints = <
 }
 
 /**
+ * Check whether a value is an ES class constructor, as opposed to an ordinary
+ * function or a factory function.
+ *
+ * `isConstructor` (from the pipeline) only checks for an own `prototype`, which is
+ * true for *every* non-arrow function — so it cannot tell a class from a factory.
+ * Native classes emitted by modern targets stringify as `class ...`, which this
+ * predicate relies on. When auto-detection is not desired, callers can always pass
+ * an explicit `{ isClass }` / `{ isFactory }` flag.
+ *
+ * @param value - The value to check.
+ * @returns `true` if the value is an ES class constructor, otherwise `false`.
+ */
+export const isClassConstructor = (value: unknown): boolean => {
+  return typeof value === 'function' && /^class[\s{]/.test(Function.prototype.toString.call(value))
+}
+
+/**
  * Check if the provided value is a Stone blueprint.
  * This function checks if the value is an object and contains the required `stone` property.
  *
@@ -168,8 +185,12 @@ export const isEmpty = (value: unknown): value is undefined | null | 0 | false |
 }
 
 /**
- * Custom function to determine if an object is mergeable.
- * Helps to avoid issues with circular references.
+ * Custom function to determine if a value should be deep-merged.
+ *
+ * Only plain objects and arrays are mergeable. Special objects (Date, Map, Set,
+ * RegExp, class instances, etc.) are treated as leaves and copied by reference,
+ * so a blueprint value like `new Date()` or `new Map()` is preserved instead of
+ * being flattened to `{}`. Frozen values are never merged.
  *
  * @param value - The value to check for mergeability.
  * @returns Whether the value is mergeable or not.
@@ -180,7 +201,7 @@ export const isEmpty = (value: unknown): value is undefined | null | 0 | false |
  * ```
  */
 const isMergeable = (value: any): boolean => {
-  return value !== undefined && typeof value === 'object' && !Object.isFrozen(value)
+  return (isPlainObject(value) || Array.isArray(value)) && !Object.isFrozen(value)
 }
 
 /**

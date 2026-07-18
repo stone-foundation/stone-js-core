@@ -50,6 +50,21 @@ export class EventEmitter {
   }
 
   /**
+   * Registers a one-shot event listener that is removed after its first invocation.
+   *
+   * @param event - The event name or type.
+   * @param handler - The callback to invoke once when the event is emitted.
+   */
+  once<TEvent extends Event = Event>(event: WildcardEventName, handler: MixedListenerHandler<TEvent, WildcardEventName>): this {
+    const onceHandler = (async (...args: any[]): Promise<void> => {
+      this.off(event, onceHandler)
+      await (handler as (...a: any[]) => unknown | Promise<unknown>)(...args)
+    }) as MixedListenerHandler<TEvent, WildcardEventName>
+
+    return this.on(event, onceHandler)
+  }
+
+  /**
    * Removes an event listener for the given event type.
    *
    * @param event - The event name or type.
@@ -57,9 +72,12 @@ export class EventEmitter {
    */
   off<TEvent extends Event = Event>(event: WildcardEventName, handler: MixedListenerHandler<TEvent, WildcardEventName>): this {
     const handlers = this.listeners.get(event)
-    isNotEmpty<Array<MixedListenerHandler<TEvent, WildcardEventName>>>(handlers)
-      ? handlers.splice(handlers.indexOf(handler) >>> 0, 1)
-      : this.listeners.set(event, [])
+
+    if (isNotEmpty<Array<MixedListenerHandler<TEvent, WildcardEventName>>>(handlers)) {
+      const index = handlers.indexOf(handler)
+      if (index !== -1) { handlers.splice(index, 1) }
+      if (handlers.length === 0) { this.listeners.delete(event) }
+    }
 
     return this
   }
@@ -83,17 +101,18 @@ export class EventEmitter {
     }
 
     const handlers = this.listeners.get(eventName)
-    const wilcardHandlers = this.listeners.get('*')
+    const wildcardHandlers = this.listeners.get('*')
 
-    if (isNotEmpty<Array<ListenerHandler<TEvent>>>(handlers) && eventPayload !== undefined) {
+    // Listeners must fire even when no payload is provided (e.g. `emit('ready')`).
+    if (isNotEmpty<Array<ListenerHandler<TEvent>>>(handlers)) {
       for (const handler of handlers.slice()) {
-        await handler(eventPayload)
+        await handler(eventPayload as TEvent)
       }
     }
 
-    if (isNotEmpty<Array<WildcardListenerHandler<WildcardEventName, TEvent>>>(wilcardHandlers) && eventPayload !== undefined) {
-      for (const handler of wilcardHandlers.slice()) {
-        await handler(eventName, eventPayload)
+    if (isNotEmpty<Array<WildcardListenerHandler<WildcardEventName, TEvent>>>(wildcardHandlers)) {
+      for (const handler of wildcardHandlers.slice()) {
+        await handler(eventName, eventPayload as TEvent)
       }
     }
   }

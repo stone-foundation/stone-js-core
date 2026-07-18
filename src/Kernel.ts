@@ -1,5 +1,6 @@
 import {
   isEmpty,
+  isNotEmpty,
   isFunctionModule,
   isMetaClassModule,
   isMetaFactoryModule,
@@ -76,7 +77,7 @@ export class Kernel<
   private readonly blueprint: IBlueprint
   private readonly eventEmitter: EventEmitter
   private readonly providers: Set<IServiceProvider>
-  private readonly registeredProviders: Set<string>
+  private readonly registeredProviders: Set<IServiceProvider>
   private readonly hooks: KernelHookType<IncomingEventType, OutgoingResponseType>
   private readonly middleware: Array<MixedPipe<IncomingEventType, OutgoingResponseType>>
   private readonly resolvedErrorHandlers: Record<string, IErrorHandler<IncomingEventType, OutgoingResponseType>>
@@ -333,13 +334,7 @@ export class Kernel<
    */
   private resolveErrorHandler (error: Error): IErrorHandler<IncomingEventType, OutgoingResponseType> {
     if (isEmpty(this.resolvedErrorHandlers[error.name])) {
-      const metaErrorHandler = this.blueprint.get<MetaErrorHandler<IncomingEventType, OutgoingResponseType>>(
-        `stone.kernel.errorHandlers.${error.name}`,
-        this.blueprint.get<MetaErrorHandler<IncomingEventType, OutgoingResponseType>>(
-          'stone.kernel.errorHandlers.default',
-          {} as any
-        )
-      )
+      const metaErrorHandler = this.resolveErrorHandlerMeta(error)
 
       if (isMetaClassModule<IErrorHandlerClass>(metaErrorHandler)) {
         this.resolvedErrorHandlers[error.name] = this.container.resolve<
@@ -355,6 +350,42 @@ export class Kernel<
     }
 
     return this.resolvedErrorHandlers[error.name]
+  }
+
+  /**
+   * Resolve the registered meta error handler for an error, honouring inheritance.
+   *
+   * Error handlers are registered by class name under `stone.kernel.errorHandlers.<name>`.
+   * We walk the error's prototype chain (its own name first, then each ancestor's name)
+   * so a subclass without its own handler falls back to an ancestor's handler
+   * (e.g. `PaymentError extends DomainError`), and finally to `default`.
+   *
+   * @param error - The error being handled.
+   * @returns The matching meta error handler, or the default (possibly empty).
+   */
+  private resolveErrorHandlerMeta (error: Error): MetaErrorHandler<IncomingEventType, OutgoingResponseType> {
+    const names: string[] = []
+    let current: any = error?.constructor
+
+    while (typeof current === 'function' && typeof current.name === 'string' && current.name.length > 0) {
+      if (!names.includes(current.name)) { names.push(current.name) }
+      current = Object.getPrototypeOf(current)
+    }
+
+    // `error.name` may differ from the constructor name (explicitly set for minification safety).
+    if (typeof error?.name === 'string' && !names.includes(error.name)) { names.unshift(error.name) }
+
+    for (const name of names) {
+      const handler = this.blueprint.get<MetaErrorHandler<IncomingEventType, OutgoingResponseType>>(
+        `stone.kernel.errorHandlers.${name}`
+      )
+      if (isNotEmpty<MetaErrorHandler<IncomingEventType, OutgoingResponseType>>(handler)) { return handler }
+    }
+
+    return this.blueprint.get<MetaErrorHandler<IncomingEventType, OutgoingResponseType>>(
+      'stone.kernel.errorHandlers.default',
+      {} as any
+    )
   }
 
   /**
@@ -391,9 +422,11 @@ export class Kernel<
    */
   private async registerProviders (): Promise<void> {
     for (const provider of this.providers) {
-      if (isEmpty(provider.register) || this.registeredProviders.has(provider.constructor.name)) { continue }
+      // Dedupe by instance identity, not `constructor.name`: factory providers all
+      // report `Object`, and class names collide under minification.
+      if (isEmpty(provider.register) || this.registeredProviders.has(provider)) { continue }
       await provider.register()
-      this.registeredProviders.add(provider.constructor.name)
+      this.registeredProviders.add(provider)
     }
   }
 

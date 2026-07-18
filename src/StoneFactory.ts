@@ -150,11 +150,18 @@ export class StoneFactory<TEvent extends IncomingEvent, UResponse extends Outgoi
    * @param module - The module to register lifecycle hooks for.
    */
   private registerLifecycleHooks (module: ClassType): void {
+    // Bind hooks to a real (lazily-created) instance, not the prototype, so class-field
+    // initializers run and `this` resolves to an instance rather than `undefined`.
+    let instance: Record<string, (...args: any[]) => unknown> | undefined
+    const getInstance = (): Record<string, (...args: any[]) => unknown> => {
+      return (instance ??= new (module as unknown as new () => Record<string, (...args: any[]) => unknown>)())
+    }
+
     getMetadata<ClassType, HookOptions[]>(module, LIFECYCLE_HOOK_KEY, []).forEach(options => {
       if (isNotEmpty<HookOptions>(options)) {
         this.blueprint.add(
           `stone.lifecycleHooks.${options.name}`,
-          [module.prototype[options.method].bind(module.prototype)]
+          [(...args: any[]) => getInstance()[options.method](...args)]
         )
       }
     })

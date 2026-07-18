@@ -130,9 +130,43 @@ export abstract class Event {
   /**
    * Return a cloned instance.
    *
+   * The `metadata` container is deep-copied (plain objects and arrays are recreated,
+   * special values kept by reference) so that mutating the clone's metadata — e.g. via
+   * middleware — never leaks back into the original event. This is what makes the
+   * Kernel's `originalEvent` snapshot a faithful pre-middleware copy.
+   *
    * @returns A cloned instance of the current class.
    */
   clone<T extends this>(): T {
-    return Object.assign(Object.create(Object.getPrototypeOf(this)), this)
+    const cloned = Object.assign(Object.create(Object.getPrototypeOf(this)), this) as T
+    Object.defineProperty(cloned, 'metadata', {
+      value: cloneMetadata(this.metadata),
+      writable: false,
+      enumerable: true,
+      configurable: true
+    })
+    return cloned
   }
+}
+
+/**
+ * Deep-clone a metadata container: plain objects and arrays are recreated recursively,
+ * every other value (Date, Map, Set, class instance, function, primitive) is copied by
+ * reference. Mirrors the merge philosophy used by `mergeBlueprints`.
+ *
+ * @param value - The value to clone.
+ * @returns A structurally cloned copy.
+ */
+function cloneMetadata<T> (value: T): T {
+  if (Array.isArray(value)) {
+    return value.map((item) => cloneMetadata(item)) as unknown as T
+  }
+  if (isPlainObject(value)) {
+    const result: Record<string, unknown> = {}
+    for (const [key, val] of Object.entries(value as Record<string, unknown>)) {
+      result[key] = cloneMetadata(val)
+    }
+    return result as unknown as T
+  }
+  return value
 }

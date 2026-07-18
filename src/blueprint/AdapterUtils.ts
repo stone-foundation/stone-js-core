@@ -13,8 +13,7 @@ import {
   FactoryAdapterErrorHandler,
   FunctionalAdapterErrorHandler
 } from '../declarations'
-import { isEmpty } from 'lodash-es'
-import { isNotEmpty } from '../utils'
+import { isEmpty, isNotEmpty } from '../utils'
 import { NextPipe } from '@stone-js/pipeline'
 import { StoneBlueprint } from '../options/StoneBlueprint'
 
